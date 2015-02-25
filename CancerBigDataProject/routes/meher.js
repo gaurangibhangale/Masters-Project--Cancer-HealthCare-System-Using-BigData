@@ -137,3 +137,26 @@ exports.signindo = function(req, res) {
 						}
 					});
 };
+
+exports.logout = function(req, res) {
+    var email = sess.email;
+    var lastlogin = new Date();
+    console.log(email);
+    req.session.destroy(function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            var connection = mysqldb.getConnection();
+
+            connection.query("UPDATE users set lastlogin = ? WHERE email = ? ",
+                    [ lastlogin, email ], function(err, rows) {
+                        if (err) {
+                            cosole.log("error : %s", err);
+                        }
+                        res.redirect('/');
+                    });
+
+            connection.end();
+        }
+    });
+}
