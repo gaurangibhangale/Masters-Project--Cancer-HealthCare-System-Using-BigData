@@ -8,7 +8,7 @@ function getConnection(){
 	    host: 'localhost',
 	    user: 'root',
 	    password : '',
-	    port : 8080, //port mysql
+	    port : 3306, //port mysql
 	    database:'cancer'
 	});
 	return connection;

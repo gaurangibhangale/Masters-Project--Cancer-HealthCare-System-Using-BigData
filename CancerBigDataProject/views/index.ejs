@@ -49,20 +49,132 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="trackSymptoms">My Symptoms</a></li>
+                                <li><a href="viewhistory">ViewHistory</a></li>
                                 <li><a href="404.html">404</a></li>
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
                         </li>
                         <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="contact-us.html">Contact</a></li>                        
+                        <li><a href="#signin" data-toggle="modal">Log In</a></li>                        
                     </ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->
 		
     </header><!--/header-->
+	<!-- Sign up/Signin -->
+	
+	<div class="modal fade" id="signin" role="dialog">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="thin text-center">Sign in to your account</h3>
+                            <p class="text-center text-muted">Lorem ipsum dolor sit amet, 
+                                <a href="#signup" data-toggle="modal">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. 
+                            </p>
+                        </div>
+                        <form id="login" name="login" method="post" action="/signin">
+                            <div class="modal-body">
+                                <label>Username/Email 
+                                <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" id="email" value="" name="email" maxlength="64" required>
+                                <label>Password 
+                                <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" id="password" value="" name="password" maxlength="64" required>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <b>
+                                        <a href="">Forgot password?</a>
+                                        </b>
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit" value="submit">Sign in</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="signup" role="dialog">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="thin text-center">Register a new account</h3>
+                                <p class="text-center text-muted">
+                                    Lorem ipsum dolor sit amet,
+                                    <a href="#signin" data-toggle="modal">Login</a>
+                                    adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio.
+                                </p>
+                        </div>
+                        <form id="register" name="register" method="post" action="/signup">
+                        <div class="modal-body">
+                            <div class="top-margin">
+                                <label for="firstname">First Name
+                                <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" id="firstname" value="" name="firstname" maxlength="64" required>
+                            </div>
+                            <div class="top-margin">
+                                <label for="lastname">Last Name
+                                <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" id="lastname" value="" name="lastname" maxlength="64" required>
+                            </div>
+                            <div class="top-margin">
+                                <label for="email">
+                                Email Address
+                                <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" id="email" value="" name="email" maxlength="64" required>
+                            </div>
+                            <div class="row top-margin">
+                                <div class="col-sm-6">
+                                    <label for="password">
+                                    Password
+                                    <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control" type="text" id="password" value="" name="password" maxlength="64" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>
+                                    Confirm Password
+                                    <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control" type="text" id="password1" value="" name="password1" maxlength="64" required>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <label class="checkbox">
+                                    <input type="checkbox">
+                                    I've read the
+                                    <a href="page_terms.html">Terms and Conditions</a>
+                                    </label>
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <button class="btn btn-action" type="submit" value="submit">Register</button>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	
+
+
+
+
 
     <section id="main-slider" class="no-margin">
         <div class="carousel slide">
@@ -207,8 +319,8 @@
     <section id="recent-works">
         <div class="container">
             <div class="center wow fadeInDown">
-                <h2>Follow Recent Works</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <h2>Follow Recent Research</h2>
+                <p class="lead">“Cancer can take away all of my physical abilities.<br> It cannot touch my mind, it cannot touch my heart, and it cannot touch my soul.” – Jim Valvano</p>
             </div>
 
             <div class="row">
@@ -217,9 +329,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item1.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme</a> </h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="https://www.youtube.com/watch?v=3fM9o72ykww" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">Cancer Detection Future?</a> </h3>
+                                <p>Jorge Soto is developing a simple, noninvasive, open-source test that looks..</p>
+                                <a class="preview" href="http://www.ted.com/talks/jorge_soto_the_future_of_early_cancer_detection" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -230,9 +342,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item2.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme</a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item2.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">What is Cancer?</a></h3>
+                                <p>Cancer is a term used for diseases in which abnormal cells divide without control and are able to invade other tissues. </p>
+                                <a class="preview" href="https://www.youtube.com/watch?v=SGaQ0WwZ_0I" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -243,9 +355,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item3.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme </a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item3.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">William Li: Can we eat to starve cancer?</a></h3>
+                                <p>William Li presents a new way to think about treating cancer and other diseases: anti-angiogenesis ...</p>
+                                <a class="preview" href="https://www.ted.com/talks/william_li" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -256,9 +368,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item4.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme </a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item4.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">Colon Cancer: Don't Ignore Your Symptoms</a></h3>
+                                <p>It took losing her mother to colon cancer to prompt Alyson Smith ...</p>
+                                <a class="preview" href="www.youtube.com/watch?v=ljmJdvons7Q" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -269,9 +381,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item5.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme</a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item5.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">David Agus: A new strategy in the war on cancer</a></h3>
+                                <p>Too often, says David Agus cancer treatments have a short-sighted</p>
+                                <a class="preview" href="https://www.ted.com/talks/david_agus_a_new_strategy_in_the_war_on_cancer" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -282,9 +394,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item6.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme </a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item6.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">Breast cancer - Symptoms and treatment</a></h3>
+                                <p>Breast cancer is the most common form of cancer in women.</p>
+                                <a class="preview" href="https://www.youtube.com/watch?v=VsviAPGfPUo" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -295,9 +407,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item7.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme </a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item7.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">How to Fight Cancer</a></h3>
+                                <p>How to Fight Cancer reveals the natural ways to fight this condition and why the medical model is failing...</p>
+                                <a class="preview" href="https://www.youtube.com/watch?v=NqUUlhdd1Vk" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -308,9 +420,9 @@
                         <img class="img-responsive" src="images/portfolio/recent/item8.png" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme </a></h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="images/portfolio/full/item8.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <h3><a href="#">Understanding Chemotherapy</a></h3>
+                                <p>Chemotherapy is a drug treatment that uses powerful chemicals to kill fast-growing cells in your body</p>
+                                <a class="preview" href="https://www.youtube.com/watch?v=p1xLMxIEjKw" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -408,11 +520,10 @@
             <div class="row">
                 <div class="col-sm-6 wow fadeInDown">
                     <div class="skill">
-                        <h2>Cancer </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+                        <h2>Cancer Statistics Highlights </h2>
+                        <p>Each year, the American Cancer Society estimates the numbers of new cancer cases and deaths that will occur in the United States in the current year and compiles the most recent data on cancer incidence, mortality, and survival.</p>
                         <div class="progress-wrap">
-                            <h3>Graphic Design</h3>
+                            <h3>Most privelent cancer state: XYZ </h3>
                             <div class="progress">
                               <div class="progress-bar  color1" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
                                 <span class="bar-width">85%</span>
@@ -422,7 +533,7 @@
                         </div>
 
                         <div class="progress-wrap">
-                            <h3>HTML</h3>
+                            <h3>Females affected by Cancer</h3>
                             <div class="progress">
                               <div class="progress-bar color2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
                                <span class="bar-width">95%</span>
@@ -431,7 +542,7 @@
                         </div>
 
                         <div class="progress-wrap">
-                            <h3>CSS</h3>
+                            <h3>Cancer percentage</h3>
                             <div class="progress">
                               <div class="progress-bar color3" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                 <span class="bar-width">80%</span>
@@ -440,7 +551,7 @@
                         </div>
 
                         <div class="progress-wrap">
-                            <h3>Wordpress</h3>
+                            <h3>Breast cancer percentage</h3>
                             <div class="progress">
                               <div class="progress-bar color4" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
                                 <span class="bar-width">90%</span>
@@ -453,13 +564,13 @@
 
                 <div class="col-sm-6 wow fadeInDown">
                     <div class="accordion">
-                        <h2>Why People like us?</h2>
+                        <h2>Cancer Surviors Blogs</h2>
                         <div class="panel-group" id="accordion1">
                           <div class="panel panel-default">
                             <div class="panel-heading active">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
-                                  Lorem ipsum dolor sit amet
+                                  Marie Botchie
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
@@ -472,8 +583,8 @@
                                             <img class="img-responsive" src="images/accordion1.png">
                                         </div>
                                         <div class="media-body">
-                                             <h4>Adipisicing elit</h4>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                             <h4>Marie Botchie: Stage IIIB</h4>
+                                             <p>When I found out that I had cancer, I decided that I was going to make cancer the best thing that ever happened to me, not the worst. At 39 years old I was diagnosed with stage IIIB breast cancer and had a double mastectomy <a href="http://www.cancercenter.com/community/survivors/marie-botchie/">read more</a></p>
                                         </div>
                                   </div>
                               </div>
@@ -484,15 +595,23 @@
                             <div class="panel-heading">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
-                                  Lorem ipsum dolor sit amet
+                                 Wayne Reeder
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
                             </div>
                             <div id="collapseTwo1" class="panel-collapse collapse">
                               <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
-                              </div>
+                               <div class="media accordion-inner">
+                                        <div class="pull-left">
+                                            <img class="img-responsive" src="images/accordion2.png">
+                                        </div>
+                                        <div class="media-body">
+                                             <h4>Wayne Reeder: Leukemia</h4>
+                                             <p>Thanksgiving Day of 2011 was the first big turning point in my fight with cancer. I was sitting at the dinner table with my wife, Linda, and our two sons,  <a href="http://www.cancercenter.com/community/survivors/wayne-reeder/">read more</a></p>
+                                        </div>
+                                </div> 
+                               </div>
                             </div>
                           </div>
 
@@ -500,14 +619,22 @@
                             <div class="panel-heading">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
-                                  Lorem ipsum dolor sit amet
+                                  Phil Bosanko
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
                             </div>
                             <div id="collapseThree1" class="panel-collapse collapse">
                               <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                              <div class="media accordion-inner">
+                                        <div class="pull-left">
+                                            <img class="img-responsive" src="images/accordion3.png">
+                                        </div>
+                                        <div class="media-body">
+                                             <h4> Phil Bosanko: Colorectal cancer - Stage IV</h4>
+                                             <p>In May 2006, I was 48 and busy living life to the fullest. I was working, enjoying life with my bride Kim, and spending my spare time woodworking, fishing,   <a href="http://www.cancercenter.com/community/survivors/phil-bosanko/">read more</a></p>
+                                        </div>
+                               </div> 
                               </div>
                             </div>
                           </div>
@@ -516,14 +643,15 @@
                             <div class="panel-heading">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1">
-                                  Lorem ipsum dolor sit amet
+                                  Sherry Scoffield
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
                             </div>
                             <div id="collapseFour1" class="panel-collapse collapse">
                               <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                              	<h4>  Sherry Scoffield- Uterine cancer - Stage III</h4>
+                                <p>The thought that I might have cancer never crossed my mind when I first started experiencing some symptoms.  I was 55 years old and   <a href="http://www.cancercenter.com/community/survivors/sherry-scoffield/">read more</a></p>
                               </div>
                             </div>
                           </div>
@@ -543,11 +671,11 @@
                         <div class="media">
                             <div class="parrent pull-left">
                                 <ul class="nav nav-tabs nav-stacked">
-                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">Responsive Web Design</a></li>
-                                    <li class=""><a href="#tab2" data-toggle="tab" class="analistic-02">Premium Plugin Included</a></li>
-                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Predefine Layout</a></li>
-                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Our Philosopy</a></li>
-                                    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">What We Do?</a></li>
+                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">Colon Cancer</a></li>
+                                    <li class=""><a href="#tab2" data-toggle="tab" class="analistic-02">Cancer free tommrow</a></li>
+                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Body weight and cancer risk</a></li>
+                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">True cost of smoking</a></li>
+                                    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">Myths of cancer</a></li>
                                 </ul>
                             </div>
 
@@ -624,7 +752,7 @@
 
                 <div class="col-xs-12 col-sm-4 wow fadeInDown">
                     <div class="testimonial">
-                        <h2>Testimonials</h2>
+                        <h2>Latest News</h2>
                          <div class="media testimonial-inner">
                             <div class="pull-left">
                                 <img class="img-responsive img-circle" src="images/testimonials1.png">
