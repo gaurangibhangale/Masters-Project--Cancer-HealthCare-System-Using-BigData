@@ -47,6 +47,7 @@ app.get('/signin',meher.signin);
 app.get('/signup',meher.signup);
 app.post('/signup',meher.saveUser);
 app.post('/signin',meher.signindo);
+app.get('/signout',meher.signout);
 
 //home page and track symptoms-->Gaurangi
 app.get('/trackSymptoms',gaurangi.tracksymptoms);

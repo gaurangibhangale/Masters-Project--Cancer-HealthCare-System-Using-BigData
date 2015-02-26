@@ -19,52 +19,56 @@ exports.signup = function(req, res) {
 
 exports.saveUser = function(req, res) {
 	var input = JSON.parse(JSON.stringify(req.body));
-	//	var chance = new Chance();
+	// var chance = new Chance();
 	console.log(input);
-	//console.log("Password: " + input.hash + " " + input.password);
+	// console.log("Password: " + input.hash + " " + input.password);
 	var password = input.password;
 	var password_temp = input.password1;
-	if(password == password_temp){
-	console.log("Password_temp and password: " + password_temp + password);
-	var cipher = crypto.createCipher(algorithm, key);
-	var encrypted = cipher.update(password, 'utf8', 'hex')
-			+ cipher.final('hex');
-	console.log(encrypted);
-	var data = {
-		fname : input.firstname,
-		lname : input.lastname,
-		email : input.email,
-		password : encrypted
-	};
-	var connection = mysqldb.getConnection();
-	connection.connect();
-	var query = connection.query("SELECT * from user WHERE email = ? ",
-			[ data.email ], function(err, rows) {
-				if (err) {
-					console.log("Error fecthing details : %s", err);
-					res.redirect('/');
-				}
-				if (rows[0] == undefined) {
-					var query = connection.query("INSERT INTO user set ?",
-							data, function(err, rows) {
-								if (err)
-									console.log("Error Inserting: %s", err);
-								console.log('enter flash');
-								//req.flash('error','You are registered.Please Login!');
-								res.redirect('/');
-							});
-					connection.end();
-				} else {
-					if (rows[0].email == input.email) {
-						//req.flash('error','Email ID already exists.Please Login');
-						console.log("i am sad");
+	if (password == password_temp) {
+		console.log("Password_temp and password: " + password_temp + password);
+		var cipher = crypto.createCipher(algorithm, key);
+		var encrypted = cipher.update(password, 'utf8', 'hex')
+				+ cipher.final('hex');
+		console.log(encrypted);
+		var data = {
+			fname : input.firstname,
+			lname : input.lastname,
+			email : input.email,
+			password : encrypted
+		};
+		var connection = mysqldb.getConnection();
+		connection.connect();
+		var query = connection.query("SELECT * from user WHERE email = ? ",
+				[ data.email ], function(err, rows) {
+					if (err) {
+						console.log("Error fecthing details : %s", err);
 						res.redirect('/');
 					}
-				}
+					if (rows[0] == undefined) {
+						var query = connection
+								.query("INSERT INTO user set ?", data,
+										function(err, rows) {
+											if (err)
+												console.log(
+														"Error Inserting: %s",
+														err);
+											console.log('enter flash');
+											// req.flash('error','You are
+											// registered.Please Login!');
+											res.redirect('/');
+										});
+						connection.end();
+					} else {
+						if (rows[0].email == input.email) {
+							// req.flash('error','Email ID already exists.Please
+							// Login');
+							console.log("i am sad");
+							res.redirect('/');
+						}
+					}
 
-			});
-	}
-	else{
+				});
+	} else {
 		console.log("Password Mismatch. Please confirm your password!!")
 		res.redirect('/');
 	}
@@ -96,11 +100,13 @@ exports.signindo = function(req, res) {
 						console.log("rows: " + userexist);
 						if (userexist == undefined) {
 							console.log("rows: " + userexist);
-							//req.flash('error','Username does not exists in database');
+							// req.flash('error','Username does not exists in
+							// database');
 							res.redirect('/');
 						} else {
 							if (rows[0].password == encrypted_password) {
 								sess = req.session;
+								var sessionset="set";
 								console.log(req.session);
 								console.log(rows[0].firstname);
 								sess.uid = rows[0].id;
@@ -128,35 +134,35 @@ exports.signindo = function(req, res) {
 									lastname : sess.lname,
 									email : sess.email,
 									lastlogin : sess.lastlogin,
+									session1:sessionset
 								});
 								connection.end();
 							} else {
-								//req.flash('error','Username or password is incorrect. Try Again!');
+								// req.flash('error','Username or password is
+								// incorrect. Try Again!');
 								res.redirect('/');
 							}
 						}
 					});
 };
 
-exports.logout = function(req, res) {
-    var email = sess.email;
-    var lastlogin = new Date();
-    console.log(email);
-    req.session.destroy(function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            var connection = mysqldb.getConnection();
-
-            connection.query("UPDATE users set lastlogin = ? WHERE email = ? ",
-                    [ lastlogin, email ], function(err, rows) {
-                        if (err) {
-                            cosole.log("error : %s", err);
-                        }
-                        res.redirect('/');
-                    });
-
-            connection.end();
-        }
-    });
-}
+exports.signout = function(req, res) {
+	if (req.session.fname == undefined) {
+		res.redirect("/");
+	} else {
+		// req.flash('error', "Successfully Signed out...");
+		var sessesionset="";
+		res.render('index', {
+			page_title : "Welcome",
+			session1 : sessionset
+		}, function(err, result) {
+			if (!err) {
+				res.end(result);
+			} else {
+				res.end('An error occured');
+				console.log(err);
+			}
+		});
+		req.session.destroy();
+	}
+};
