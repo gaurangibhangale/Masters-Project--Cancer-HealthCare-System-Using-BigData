@@ -1,0 +1,109 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
+
+style, html {
+p.test1 {
+    width: 20em; 
+    word-break: keep-all;
+}
+}
+hr{
+        
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+
+      }
+
+
+body, html {
+          height: 100%;
+          margin: 0;
+          -webkit-font-smoothing: antialiased;
+          font-weight: 100;
+          background: #ffffff;
+          text-align: center;
+          font-family: helvetica;
+      }
+       
+      .tabs input[type=radio] {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+      }
+      .tabs {
+        width: 90%;
+        float: none;
+        list-style: none;
+        position: relative;
+        align:center;
+        margin: 30px auto;
+        
+      }
+      .tabs li{
+        float: left;
+      }
+      .tabs label {
+          display: block;
+          margin-right: 5px;
+          padding: 5px 7px;
+         border-style: solid;
+         border-width: 1px;
+         border-color: #ccc;
+          border-radius: 3px 3px 3px 3px;
+          color: #333;
+          font-size: 16px;
+          font-weight: normal;
+          font-family: 'Lily Script One', helveti;
+          background: rgba(255,255,255,1.0);
+          cursor: pointer;
+          position: relative;
+          top: 3px;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+      }
+      .tabs label:hover {
+        background: #c52d2f;
+        color: white;
+        top: 0;
+      }
+       
+      [id^=tab]:checked + label {
+        background: #c52d2f;
+        color: white;
+        top: 0;
+      }
+       
+      [id^=tab]:checked ~ [id^=tab-content] {
+          display: block;
+      }
+      .tab-content{
+        z-index: 2;
+        display: none;
+        text-align: left;
+        border-radius:2px 2px 2px 2px;
+        align:center;
+        width:100%;
+        font-size: 17px;
+        line-height: 140%;
+        padding-top: 10px;
+        background: #e5e5e5;
+        padding: 40px;
+        color: #4e4e4e;
+        position: absolute;
+        top: 53px;
+        left: 40px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        -webkit-animation-duration: 0.5s;
+        -o-animation-duration: 0.5s;
+        -moz-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+      }
+      
+      

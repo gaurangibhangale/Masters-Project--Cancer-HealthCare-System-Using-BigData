@@ -14,6 +14,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -42,22 +43,23 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="trackSymptoms">My Symptoms</a></li>
-                                <li><a href="viewhistory">ViewHistory</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html">Blog</a></li> 
+                        <li class="active"><a href="/">Home</a></li>
+                        <!--<li><a href="about-us.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li> -->
+                        <li><a href="/taxanomy">Cancer Taxonomy</a></li>  
+
+                        <!--<li><a href="blog.html">Blog</a></li>  -->
                         
                         <%if(session1!=""){%>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Track My Health <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="trackSymptoms">Track your Symptoms</a></li>
+                                <li><a href="viewhistory">Symptoms History</a></li>
+                                <!--li><a href="404.html">404</a></li>
+                                <li><a href="shortcodes.html">Shortcodes</a></li>-->
+                            </ul>
+                        </li>
                         <li><a href="/">Log Out</a></li>
                         <%}else{%>
                         <li><a href="#signin" data-toggle="modal">Log In</a></li>    				
