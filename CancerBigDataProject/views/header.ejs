@@ -29,6 +29,23 @@
 <body class="homepage">
 
     <header id="header">
+    	<%if(session1!=""){%>
+    	<div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-4">
+                        <div class="top-number"><p></p></div>
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                        <div class="top-number" align="right">
+                        	<p>Welcome <%=sess.fname%>&nbsp;<%=sess.lname%>&nbsp;&nbsp;&nbsp;&nbsp;Last Login:&nbsp;<%=sess.lastlogin%></p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div>
+        <%}%>
+        
         <nav class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
