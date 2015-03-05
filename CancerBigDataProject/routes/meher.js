@@ -151,7 +151,7 @@ exports.signout = function(req, res) {
 		res.redirect("/");
 	} else {
 		// req.flash('error', "Successfully Signed out...");
-		var sessesionset="";
+		var sessionset="";
 		res.render('index', {
 			page_title : "Welcome",
 			session1 : sessionset
@@ -164,5 +164,6 @@ exports.signout = function(req, res) {
 			}
 		});
 		req.session.destroy();
+		console.log('session destroyed');
 	}
 };
