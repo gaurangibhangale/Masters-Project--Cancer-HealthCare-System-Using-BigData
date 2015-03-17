@@ -167,3 +167,17 @@ exports.signout = function(req, res) {
 		console.log('session destroyed');
 	}
 };
+
+exports.screening = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset="";
+	}
+	else{
+		var sessionset="set";
+	}
+		res.render('screening', {
+			title : 'Screening Recommendation',
+			session1 : sessionset
+		});
+};

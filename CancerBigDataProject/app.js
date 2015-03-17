@@ -49,6 +49,7 @@ app.get('/signup',meher.signup);
 app.post('/signup',meher.saveUser);
 app.post('/signin',meher.signindo);
 app.get('/signout',meher.signout);
+app.get('/screening',meher.screening);
 
 //Gaurangi javascript
 //home page and track symptoms
