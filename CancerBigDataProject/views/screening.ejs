@@ -1,81 +1,172 @@
 <% include header %>
-
-    <!-- Page Content -->
-    
+<!-- Page Content -->
 <section id="contact-page">
-    <div class="container">
+	<div class="container">
+		<!-- Page Heading/Breadcrumbs -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Screening Recommendation
+					<small>Get yourself Screened for Cancer</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="/index">Home</a>
+					</li>
+					<li class="active">Screening Recommendation</li>
+				</ol>
+			</div>
+		</div>
+		<!-- /.row -->
+		<!-- Contact Form -->
+		<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+		<div class="row">
+			<div class="col-md-8">
+				<h3>Please enter your details</h3>
+				<form name="sentMessage" id="contactForm" method="post" action="/screeningRec">
+					<table>
+						<div class="control-group form-group">
+							<tr> 
+								<td>
+									<div class="controls">
+										<label>Age:</label>
+										<!--<input type="text" class="form-control" id="age" name="age" required data-validation-required-message="Please enter your age">  -->
+									</td>
+									<td>
+										<select>
+											<option label="age" value="age" selected>0 - 20</option>
+											<option label="age" value="age" >20 - 40</option>
+											<option label="age" value="age" >40 - 60</option>
+											<option label="age" value="age" >60 - 80</option>
+											<option label="age" value="age" >80 - 100</option>
+										</select>
+									</td>
+								</tr>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
 
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Screening Recommendation
-                    <small>Get yourself Screened for Cancer</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">Screening Recommendation</li>
-                </ol>
-            </div>
-        </div>
-        <!-- /.row -->
+											<label>Gender:</label>
+										</td>
+										<td>
+											<input type="radio" name="sex" value="male">Male
+											<input type="radio" name="sex" value="female">Female
+										</td>
+									</tr>
+								</div>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
 
-        <!-- Contact Form -->
-        <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-        <div class="row">
-            <div class="col-md-8">
-                <h3>Enter Details</h3>
-                <form name="sentMessage" id="contactForm" method="post" action="/addSymptoms">
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Cancer Type</label>
-                            <input type="text" class="form-control" id="cancertype" name="cancertype" required data-validation-required-message="Please enter cancer type">
-                            <p class="help-block"></p>
-                        </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Date</label>
-                            <input type="date" class="form-control" id="date" name="date">
-                            <p class="help-block"></p>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Location</label>
-                            <input type="text" class="form-control" id="location" name="location" required data-validation-required-message="Please enter your location">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Severity</label>
-                            <input type="text" class="form-control" id="severity" name="severity" required data-validation-required-message="Please enter Severity">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Description:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="description" name="description" required data-validation-required-message="Please enter your symptom description" maxlength="500" style="resize:none"></textarea>
-                        </div>
-                    </div>
-                    <div id="success"></div>
-                    <!-- For success/fail messages -->
-                    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-                </form>
-            </div>
-
-        </div>
-        <!-- /.row -->
-        </section>
-   
-
-      <% include footer %>
-
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/wow.min.js"></script>
-</body>
-</html>
+											<label>Alcohol Consumption:</label>
+										</td>
+										<td>
+											<select>
+												<option label="alcohol" value="alcohol" selected>High</option>
+												<option label="alcohol" value="alcohol" >Low</option>
+												<option label="alcohol" value="alcohol" >No Alcohol Consumption</option>
+											</select>
+										</td>
+									</tr>
+								</div>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
+											<label>Family History of Cancer:</label>
+										</td>
+										<td>
+											<select>
+												<option label="cancerhistory" value="cancerhistory" selected>Yes</option>
+												<option label="cancerhistory" value="cancerhistory">No</option>
+											</select>
+										</td>
+									</tr>
+								</div>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
+											<label>If Yes, then which type of cancer?</label>
+										</td>
+										<td>
+											<select>
+												<option label="cancertype" value="cancertype" selected>None</option>
+												<option label="cancertype" value="cancertype">Breast Cancer</option>
+												<option label="cancertype" value="cancertype">Bladder Cancer</option>
+												<option label="cancertype" value="cancertype">Lung Cancer</option>
+												<option label="cancertype" value="cancertype">Colo-Rectal Cancer</option>
+												<option label="cancertype" value="cancertype">Prostate Cancer</option>
+											</select>
+										</td>
+									</tr>
+								</div>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
+											<label>HIV Infected:</label>
+										</td>
+										<td>
+											<select>
+												<option label="hiv" value="hiv" selected>Yes</option>
+												<option label="hiv" value="hiv">No</option>
+											</select>
+										</td>
+									</tr>
+								</div>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
+											<label>Bladder Irritation/Infection:</label>
+										</td>
+										<td>
+											<select>
+												<option label="bladder" value="bladder" selected>Yes</option>
+												<option label="bladder" value="bladder">No</option>
+											</select>
+										</td>
+									</tr>
+								</div>
+							</div>
+							<div class="control-group form-group">
+								<div class="controls">
+									<tr>
+										<td>
+											<label>Rectal Bleeding:</label>
+										</td>
+										<td>
+											<select>
+												<option label="rectal" value="rectal" selected>Yes</option>
+												<option label="rectal" value="rectal">No</option>
+											</select>
+										</td>
+									</tr>
+								</div>
+							</div>
+						</table>
+						<div id="success"></div>
+						<!-- For success/fail messages -->
+						<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+					</form>
+				</div>
+			</div>
+			<!-- /.row -->
+		</section>
+		<% include footer %>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/jquery.prettyPhoto.js"></script>
+		<script src="js/jquery.isotope.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/wow.min.js"></script>
+	</body>
+	</html>

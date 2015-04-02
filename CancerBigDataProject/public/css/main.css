@@ -26,6 +26,9 @@ body {
 	overflow:hidden;
 	width:75%;
 }
+th, td {
+    padding: 5px;
+}
 
 h1,
 h2,
