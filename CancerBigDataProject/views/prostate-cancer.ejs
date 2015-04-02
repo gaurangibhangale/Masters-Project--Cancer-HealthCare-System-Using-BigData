@@ -1,12 +1,46 @@
 <% include header %>
-    <section id="feature" class="transparent-bg">
-        <div class="container">
-           <div class="left wow fadeInDown">
+   <% include header %>
+   <link href="css/NavCancerInfo.css" rel="stylesheet">
+
+
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="#tab1">Bladder Cancer</a></li>
+						<li class=""><a href="#tab2">Symptoms</a></li>
+						<li class=""><a href="#tab3">Stages</a></li>
+						<li class=""><a href="#tab4">Treatment Techniques</a></li>
+						
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+	
+	
+		<div class="col-sm-9">
+
+           <div class="left wow fadeInDown" id="tab1">
                 <h2>What is Prostate Cancer ?</h2>
                 <p class="lead"> Cancer that forms in tissues of the prostate (a gland in the male reproductive system found below the bladder and in front of the rectum). Prostate cancer usually occurs in older men. </p>
             </div> <br>
             
-            <div class="left wow fadeInDown">
+            <div class="left wow fadeInDown" id="tab2">
                 <h2>What Are the Symptoms of Prostate Cancer ?</h2>
                 <p class="lead">There are no warning signs of early prostate cancer. Once a tumor causes the prostate gland to swell, or once cancer spreads beyond the prostate, the following symptoms may happen: </p>
                 <ul class="lead">
@@ -27,7 +61,7 @@
                 </ul>
             </div> <br>
             
-            <div class="left wow fadeInDown">
+            <div class="left wow fadeInDown" id="tab3">
                 <h2>Stages of Prostate Cancer</h2>
                 <p class="lead">There are four stages of prostate cancer as follows: <br /> </p>
                 <ul class="lead">
@@ -38,7 +72,7 @@
                 </ul>
             </div> <br>
             
-            <div class="left wow fadeInDown">
+            <div class="left wow fadeInDown" id="tab4">
                 <h2>Treatment Techniques</h2>
                 <p class="lead">The Prostate cancer can be treated by various treatment techniques depending on the stage of the cancer. <br /> </p>
                 <p class="lead"><b><h3>Prescription</h3></b></p>
@@ -55,7 +89,8 @@
                 <p class="lead"><b>Surgeon:</b> Performs operations to treat disease. </p>
                 <br> <br> <br> <br>
             </div>
-
+			</div>
+			</div>
             <div class="row">
                 <div class="features">
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">

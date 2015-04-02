@@ -1,0 +1,171 @@
+ <% include header %>
+    <section id="feature" class="transparent-bg">
+        <div class="container">
+ 			  <button onclick="initializeViz()">Click me</button>
+              <div id="chart" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+              <div id="chart2" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+                
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+	<!--  script>
+$(function () {
+    $('#chart').highcharts({
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: 'Historic and Estimated Worldwide Population Distribution by Region'
+        },
+        subtitle: {
+            text: 'Source: Wikipedia.org'
+        },
+        xAxis: {
+            categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Percent'
+            }
+        },
+        tooltip: {
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'percent',
+                lineColor: '#ffffff',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#ffffff'
+                }
+            }
+        },
+        series: [{
+            name: 'Asia',
+            data: [502, 635, 809, 947, 1402, 3634, 5268]
+        }, {
+            name: 'Africa',
+            data: [106, 107, 111, 133, 221, 767, 1766]
+        }, {
+            name: 'Europe',
+            data: [163, 203, 276, 408, 547, 729, 628]
+        }, {
+            name: 'America',
+            data: [18, 31, 54, 156, 339, 818, 1201]
+        }, {
+            name: 'Oceania',
+            data: [2, 2, 2, 6, 13, 30, 46]
+        }]
+    });
+});
+</script>
+<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+<script src="http://code.highcharts.com/mapdata/countries/us/us-all.js"></script>	
+<script src="http://code.highcharts.com/maps/modules/data.js"></script>
+
+<script>
+
+$(function () {
+
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=us-population-density.json&callback=?', function (data) {
+
+        // Make codes uppercase to match the map data
+        $.each(data, function () {
+            this.code = this.code.toUpperCase();
+        });
+
+        // Instanciate the map
+        $('#chart2').highcharts('Map', {
+
+            chart : {
+                borderWidth : 1
+            },
+
+            title : {
+                text : 'US population density (/km²)'
+            },
+
+            legend: {
+                layout: 'horizontal',
+                borderWidth: 0,
+                backgroundColor: 'rgba(255,255,255,0.85)',
+                floating: true,
+                verticalAlign: 'top',
+                y: 25
+            },
+
+            mapNavigation: {
+                enabled: true
+            },
+
+            colorAxis: {
+                min: 1,
+                type: 'logarithmic',
+                minColor: '#EEEEFF',
+                maxColor: '#000022',
+                stops: [
+                    [0, '#EFEFFF'],
+                    [0.67, '#4444FF'],
+                    [1, '#000022']
+                ]
+            },
+
+            series : [{
+                animation: {
+                    duration: 1000
+                },
+                data : data,
+                mapData: Highcharts.maps['countries/us/us-all'],
+                joinBy: ['postal-code', 'code'],
+                dataLabels: {
+                    enabled: true,
+                    color: 'white',
+                    format: '{point.code}'
+                },
+                name: 'Population density',
+                tooltip: {
+                    pointFormat: '{point.code}: {point.value}/km²'
+                }
+            }]
+        });
+    });
+});
+</script-->
+<script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/tableau_v8.js"></script>
+<script type="text/javascript">
+function initializeViz() {
+	  var placeholderDiv = document.getElementById("chart");
+	  var url = "https://public.tableau.com/views/ageatdiag/Sheet2?:embed=y&:showTabs=y&:display_count=yes";
+	  var options = {
+	    width: placeholderDiv.offsetWidth,
+	    height: placeholderDiv.offsetHeight,
+	    hideTabs: true,
+	    hideToolbar: true,
+	    onFirstInteractive: function () {
+	      workbook = viz.getWorkbook();
+	      activeSheet = workbook.getActiveSheet();
+	    }
+	  };
+	  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
+	} 
+</script>
+            </div><!--/.container-->
+    </section><!--/#feature-->
+
+<% include footer %>
