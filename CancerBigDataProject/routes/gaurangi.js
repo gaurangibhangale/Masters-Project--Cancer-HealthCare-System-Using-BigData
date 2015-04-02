@@ -15,6 +15,18 @@ exports.tracksymptoms = function(req, res) {
 		});
 	}
 };
+exports.visualization = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset = "";
+	} else {
+		var sessionset = "set";
+	}
+	res.render('visualization', {
+		title : 'visualization',
+		session1 : sessionset
+	})
+}
 
 exports.contactus = function(req, res) {
 	res.render('contact-us', {

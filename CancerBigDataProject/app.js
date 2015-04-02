@@ -66,6 +66,7 @@ app.get('/colorectal-cancer',gaurangi.colorectal);
 app.get('/lung-cancer',gaurangi.lung);
 app.get('/prostate-cancer',gaurangi.prostate);
 app.get('/vulvar-cancer',gaurangi.vulvar);
+app.get('/visualization',gaurangi.visualization);
 //cancer taxanomy
 app.get('/taxanomy',hanifa.taxanomy);
 
