@@ -52,7 +52,7 @@ exports.saveUser = function(req, res) {
 												console.log(
 														"Error Inserting: %s",
 														err);
-											console.log('enter flash');
+											//console.log('enter flash');
 											// req.flash('error','You are
 											// registered.Please Login!');
 											res.redirect('/');
@@ -107,8 +107,8 @@ exports.signindo = function(req, res) {
 							if (rows[0].password == encrypted_password) {
 								sess = req.session;
 								var sessionset="set";
-								console.log(req.session);
-								console.log(rows[0].firstname);
+								console.log("sess: "+req.session);
+								console.log("Undef: "+rows[0].fname);
 								sess.uid = rows[0].id;
 								sess.fname = rows[0].fname;
 								sess.lname = rows[0].lname;
@@ -150,7 +150,7 @@ exports.signout = function(req, res) {
 	if (req.session.fname == undefined) {
 		res.redirect("/");
 	} else {
-		// req.flash('error', "Successfully Signed out...");
+		//req.flash('info', 'Successfully Signed Out..!!');
 		var sessionset="";
 		res.render('index', {
 			page_title : "Welcome",
@@ -177,6 +177,69 @@ exports.screening = function(req, res) {
 		var sessionset="set";
 	}
 		res.render('screening', {
+			title : 'Screening Recommendation',
+			session1 : sessionset
+		});
+};
+
+exports.screeningSubmit = function(req,res){
+	var input = JSON.parse(JSON.stringify(req.body));
+	var data = {
+			age : input.age,
+			gender : input.gender,
+			alcohol : input.alcohol,
+			cancertype : input.cancertype,
+			hiv : input.hiv,
+			bladder : input.bladder,
+			rectal : input.rectal
+		};
+		console.log(data);
+	var screen = "";
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset="";
+	}
+	else{
+		var sessionset="set";
+	}
+	if(data.cancertype=="breast" || data.cancertype =="none" && data.gender=="female" && data.alcohol=="high" && data.hiv=="no" && data.bladder=="no" && data.rectal=="no"){
+		screen="breast";	
+	}
+	else if(data.cancertype=="none" && data.gender=="male" && data.alcohol=="high"||data.alcohol=="low"||data.alcohol=="no" && data.hiv=="no" && data.bladder=="yes" && data.rectal=="no"){
+		screen="bladder";
+	}
+	else if(data.cancertype=="lung" || data.cancertype =="none" && data.gender=="male" || data.gender=="female" && data.alcohol=="high"||data.alcohol=="low"||data.alcohol=="no" && data.hiv=="no" && data.bladder=="no" && data.rectal=="no"){
+		screen="lung";
+	}
+	else if(data.cancertype=="none" && data.gender=="female" && data.alcohol=="high"||data.alcohol=="low"||data.alcohol=="no" && data.hiv=="yes" && data.bladder=="no" && data.rectal=="no"){
+		screen="vulvar";
+	}
+	else if(data.cancertype=="rectal" || data.cancertype =="none" && data.gender=="male" && data.alcohol=="high" && data.hiv=="no" && data.bladder=="no" && data.rectal=="yes"){
+		screen="rectal";
+	}
+	else if(data.cancertype=="prostate" || data.cancertype =="none" && data.gender=="male" && data.alcohol=="high"||data.alcohol=="low"||data.alcohol=="no" && data.hiv=="yes" && data.bladder=="no" && data.rectal=="no"){
+		screen="prostate";
+	}
+	else {
+		screen="none";
+	}
+	console.log("screen:"+screen);
+	res.render('screeningResult', {
+		title : 'Screening Recommendation',
+		session1 : sessionset,
+		screen : screen
+	});
+}
+
+exports.screeningResult = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset="";
+	}
+	else{
+		var sessionset="set";
+	}
+		res.render('screeningResult', {
 			title : 'Screening Recommendation',
 			session1 : sessionset
 		});

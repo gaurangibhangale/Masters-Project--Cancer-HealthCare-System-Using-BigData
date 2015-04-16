@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h3>Please enter your details</h3>
-				<form name="sentMessage" id="contactForm" method="post" action="/screeningRec">
+				<form name="sentMessage" id="contactForm" method="post" action="/screening">
 					<table>
 						<div class="control-group form-group">
 							<tr> 
@@ -31,12 +31,12 @@
 										<!--<input type="text" class="form-control" id="age" name="age" required data-validation-required-message="Please enter your age">  -->
 									</td>
 									<td>
-										<select>
-											<option label="age" value="age" selected>0 - 20</option>
-											<option label="age" value="age" >20 - 40</option>
-											<option label="age" value="age" >40 - 60</option>
-											<option label="age" value="age" >60 - 80</option>
-											<option label="age" value="age" >80 - 100</option>
+										<select name="age" required>
+											<option value="0-20">0 - 20</option>
+											<option value="20-40">20 - 40</option>
+											<option value="40-60">40 - 60</option>
+											<option value="60-80">60 - 80</option>
+											<option value="80-100">80 - 100</option>
 										</select>
 									</td>
 								</tr>
@@ -45,12 +45,11 @@
 								<div class="controls">
 									<tr>
 										<td>
-
 											<label>Gender:</label>
 										</td>
 										<td>
-											<input type="radio" name="sex" value="male">Male
-											<input type="radio" name="sex" value="female">Female
+											<input type="radio" name="gender" value="male" checked>Male
+											<input type="radio" name="gender" value="female">Female
 										</td>
 									</tr>
 								</div>
@@ -59,14 +58,13 @@
 								<div class="controls">
 									<tr>
 										<td>
-
 											<label>Alcohol Consumption:</label>
 										</td>
 										<td>
-											<select>
-												<option label="alcohol" value="alcohol" selected>High</option>
-												<option label="alcohol" value="alcohol" >Low</option>
-												<option label="alcohol" value="alcohol" >No Alcohol Consumption</option>
+											<select name="alcohol" required>
+												<option value="high" selected>High</option>
+												<option value="low" >Low</option>
+												<option value="no" >No Alcohol Consumption</option>
 											</select>
 										</td>
 									</tr>
@@ -76,31 +74,16 @@
 								<div class="controls">
 									<tr>
 										<td>
-											<label>Family History of Cancer:</label>
+											<label>Any Family History of Cancer?<br/> If Yes, then which type of cancer? Else select None</label>
 										</td>
 										<td>
-											<select>
-												<option label="cancerhistory" value="cancerhistory" selected>Yes</option>
-												<option label="cancerhistory" value="cancerhistory">No</option>
-											</select>
-										</td>
-									</tr>
-								</div>
-							</div>
-							<div class="control-group form-group">
-								<div class="controls">
-									<tr>
-										<td>
-											<label>If Yes, then which type of cancer?</label>
-										</td>
-										<td>
-											<select>
-												<option label="cancertype" value="cancertype" selected>None</option>
-												<option label="cancertype" value="cancertype">Breast Cancer</option>
-												<option label="cancertype" value="cancertype">Bladder Cancer</option>
-												<option label="cancertype" value="cancertype">Lung Cancer</option>
-												<option label="cancertype" value="cancertype">Colo-Rectal Cancer</option>
-												<option label="cancertype" value="cancertype">Prostate Cancer</option>
+											<select name="cancertype" required>
+												<option value="none">None</option>
+												<option value="breast">Breast Cancer</option>
+												<option value="bladder">Bladder Cancer</option>
+												<option value="lung">Lung Cancer</option>
+												<option value="rectal">Colo-Rectal Cancer</option>
+												<option value="prostate">Prostate Cancer</option>
 											</select>
 										</td>
 									</tr>
@@ -113,9 +96,9 @@
 											<label>HIV Infected:</label>
 										</td>
 										<td>
-											<select>
-												<option label="hiv" value="hiv" selected>Yes</option>
-												<option label="hiv" value="hiv">No</option>
+											<select name="hiv" required>
+												<option value="yes" selected>Yes</option>
+												<option value="no">No</option>
 											</select>
 										</td>
 									</tr>
@@ -128,9 +111,9 @@
 											<label>Bladder Irritation/Infection:</label>
 										</td>
 										<td>
-											<select>
-												<option label="bladder" value="bladder" selected>Yes</option>
-												<option label="bladder" value="bladder">No</option>
+											<select name="bladder" required>
+												<option value="yes" selected>Yes</option>
+												<option value="no">No</option>
 											</select>
 										</td>
 									</tr>
@@ -143,9 +126,9 @@
 											<label>Rectal Bleeding:</label>
 										</td>
 										<td>
-											<select>
-												<option label="rectal" value="rectal" selected>Yes</option>
-												<option label="rectal" value="rectal">No</option>
+											<select name="rectal" required>
+												<option value="yes" selected>Yes</option>
+												<option value="no">No</option>
 											</select>
 										</td>
 									</tr>

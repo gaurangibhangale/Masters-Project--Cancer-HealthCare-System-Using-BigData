@@ -11,8 +11,8 @@ var express = require('express')
 //  , Chance = require('chance')
   , session = require('express-session')
   , bodyParser = require('body-parser')
-  , fs = require('fs')
-  , flash = require('connect-flash');
+  , fs = require('fs');
+var flash = require('connect-flash');
 
 var app = express();
 //var connection = require('express-myconnection');
@@ -50,6 +50,8 @@ app.post('/signup',meher.saveUser);
 app.post('/signin',meher.signindo);
 app.get('/signout',meher.signout);
 app.get('/screening',meher.screening);
+app.post('/screening',meher.screeningSubmit);
+app.get('screeningResult',meher.screeningResult);
 
 //Gaurangi javascript
 //home page and track symptoms

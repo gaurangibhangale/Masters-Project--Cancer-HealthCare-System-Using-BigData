@@ -1,0 +1,57 @@
+<% include header %>
+<!-- Page Content -->
+<section id="contact-page">
+	<div class="container">
+		<!-- Page Heading/Breadcrumbs -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Screening Recommendation
+					<small>Get yourself Screened for Cancer</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="/index">Home</a></li>
+					<li><a href="/screening">Screening</a></li>
+					<li class="active">Screening Recommendation</li>
+				</ol>
+			</div>
+		</div>
+		<!-- /.row -->
+		<!-- Contact Form -->
+		<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+		<div class="row">
+			<div class="col-md-8">
+					<%if(screen="breast"){%>
+						<h4>Please visit the doctor and if he suggests then consider getting yourself screened for Breast Cancer</h4>
+					<%}
+					else if(screen="bladder"){%>
+						<h4>Please visit the doctor and if he suggests then consider getting yourself screened for Bladder Cancer</h4>
+					<%}
+					else if(screen="lung"){%>
+						<h4>Please visit the doctor and if he suggests then consider getting yourself screened for Lung Cancer</h4>
+					<%}
+					else if(screen="vulvar"){%>
+						<h4>Please visit the doctor and if he suggests then consider getting yourself screened for Vulvar Cancer</h4>
+					<%}
+					else if(screen="rectal"){%>
+						<h4>Please visit the doctor and if he suggests then consider getting yourself screened for Colo-Rectal Cancer</h4>
+					<%}
+					else if(screen="prostate"){%>
+						<h4>Please visit the doctor and if he suggests then consider getting yourself screened for Prostate Cancer  </h4>
+					<%}
+					else if(screen="other"){%>
+						<h4>You don't show any symptoms or signs of Cancer.However pay a visit to the doctor and follow his advice</h4>
+					<%}%>
+			</div>
+		</div>
+			<!-- /.row -->
+	</section>
+	<% include footer %>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/jquery.isotope.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/wow.min.js"></script>
+	</body>
+	</html>
