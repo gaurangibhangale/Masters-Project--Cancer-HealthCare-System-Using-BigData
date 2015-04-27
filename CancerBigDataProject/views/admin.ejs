@@ -1,0 +1,452 @@
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"><a href="/">Home </a></li>
+				<li><a href="#breast">Breast Cancer</a></li>
+				<li><a href="#colorectal">Colo-rectal Cancer</a></li>
+				<li><a href="#lung">Lung Cancer</a></li>
+				<li><a href="#bladder">Bladder Cancer</a></li>
+				<li><a href="#vulvar">Vulvar Cancer</a></li>
+				<li><a href="#prostate">Prostate Cancer</a></li>
+			
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12" id="breast">
+						<h1>Breast Caner Information</h1>
+						
+							.
+						</p>
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+							Menu</a>
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Enter Details</h3>
+								<form name="sentMessage" id="contactForm" method="post"
+									action="/addinfo">
+									<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Description</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="description" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[0].description%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Symptoms</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="symptoms" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[0].symptoms%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>	
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Stages</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="stages" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[0].stages%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Treatment</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="treatment" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[0].treatment%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div id="success"></div>
+										<!-- For success/fail messages -->
+										<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				</div>
+<div class="container-fluid">
+<div class="row">
+					<div class="col-lg-12" id="colorectal">
+						<h1>Colorectal Cancer Information</h1>
+						
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+							Menu</a>
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Enter Details</h3>
+								<form name="sentMessage" id="contactForm" method="post"
+									action="/addinfo">
+									<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Description</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="description" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[1].description%></textarea>
+											<p class="help-block"></p>
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Symptoms</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="symptoms" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[1].symptoms%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>	
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Stages</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="stages" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[1].stages%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Treatment</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="treatment" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[1].treatment%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div id="success"></div>
+										<!-- For success/fail messages -->
+										<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				</div>
+				<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12" id="lung">
+						<h1>Lung Cancer Information</h1>
+						
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+							Menu</a>
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Enter Details</h3>
+								<form name="sentMessage" id="contactForm" method="post"
+									action="/addinfo">
+									<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Description</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="description" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[2].description%></textarea>
+											<p class="help-block"></p>
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Symptoms</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="symptoms" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[2].symptoms%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>	
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Stages</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="stages" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[2].stages%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Treatment</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="treatment" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[2].treatment%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div id="success"></div>
+										<!-- For success/fail messages -->
+										<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				</div>
+				<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12" id="bladder">
+						<h1>Bladder Cancer Information</h1>
+						
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+							Menu</a>
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Enter Details</h3>
+								<form name="sentMessage" id="contactForm" method="post"
+									action="/addinfo">
+									<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Description</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="description" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[3].description%></textarea>
+											<p class="help-block"></p>
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Symptoms</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="symptoms" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[3].symptoms%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>	
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Stages</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="stages" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[3].stages%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Treatment</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="treatment" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[3].treatment%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div id="success"></div>
+										<!-- For success/fail messages -->
+										<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				</div>
+				<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12" id="vulvar">
+						<h1>Vulvar Cancer Information</h1>
+						
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+							Menu</a>
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Enter Details</h3>
+								<form name="sentMessage" id="contactForm" method="post"
+									action="/addinfo">
+									<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Description</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="description" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[4].description%></textarea>
+											<p class="help-block"></p>
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Symptoms</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="symptoms" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[4].symptoms%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>	
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Stages</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="stages" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[4].stages%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Treatment</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="treatment" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[4].treatment%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div id="success"></div>
+										<!-- For success/fail messages -->
+										<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				</div>
+				<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12" id="prostate">
+						<h1>Prostate Cancer Information</h1>
+						
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+							Menu</a>
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Enter Details</h3>
+								<form name="sentMessage" id="contactForm" method="post"
+									action="/addinfo">
+									<div class="control-group form-group">
+                        <div class="controls">
+                            <label>Cancer Type</label>
+                            <input type="hidden" class="form-control" id="cancertype" name="cancertype" value='prostate'>
+                        </div>
+                    </div>
+									<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Description</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="description" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[5].description%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Symptoms</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="symptoms" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[5].symptoms%></textarea>
+											<p class="help-block"></p>
+										</div>
+										</div>	
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Stages</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="stages" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[5].stages%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div class="control-group form-group">
+										<div class="controls">
+											<label>Cancer Treatment</label>
+											<textarea rows="10" cols="100" class="form-control"
+												id="description" name="treatment" required
+												data-validation-required-message="Please enter your symptom description"
+												maxlength="8000" style="resize: none"><%=data[5].treatment%></textarea>
+											<p class="help-block"></p>
+										</div>	
+										</div>
+										<div id="success"></div>
+										<!-- For success/fail messages -->
+										<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+								</form>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				</div>
+
+
+
+		
+
+
+
+
+
+			</div>
+
+	
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

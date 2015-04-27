@@ -1,171 +1,243 @@
  <% include header %>
-    <section id="feature" class="transparent-bg">
-        <div class="container">
- 			  <button onclick="initializeViz()">Click me</button>
-              <div id="chart" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
-              <div id="chart2" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
-                
+<section id="feature" class="transparent-bg">
+	<div class="container">
+		<!-- <button
+			onclick="highcharts('data/output.csv','scatter','Gender Comparison for Breast Cancer')">Click
+			me  Gender bd</button>  -->
+		<table>
+			<div class="control-group form-group">
+				<tr>
+					<td><label>Choose from the list to Cancer Type:</label></td>
+					<td><select name="cancertype" id="cancertype">
+							<option value="breast">Breast</option>
+							<option value="colorectal">Colorectal</option>
+							<option value="lung">Lung</option>
+							<option value="bladder">Bladder</option>
+							<option value="vulvar">Vuvlvar</option>
+							<option value="prostate">Prostate</option>
+					</select></td>
+				</tr>
+			</div>
+			<div class="control-group form-group">
+				<tr>
+					<td><label>Choose from the list to Visualize result:</label></td>
+					<td><select name="attribute" id="attribute">
+							<option value="age_at_diagnosis">Age</option>
+							<option value="gender_year">GenderBasedOnYear</option>
+							<option value="gender">Gender</option>
+							<option value="location">Location</option>
+							<option value="survival">Life expectancy</option>
+					</select></td>
+				</tr>
+			</div>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+			<div class="control-group form-group">
+				<tr>
+					<td><button onclick="renderchart();">submit</button>
+				</tr>
+		</table>
+
+		<div id="chart"
+			style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+		
 
 
-	<!--  script>
-$(function () {
-    $('#chart').highcharts({
-        chart: {
-            type: 'area'
-        },
-        title: {
-            text: 'Historic and Estimated Worldwide Population Distribution by Region'
-        },
-        subtitle: {
-            text: 'Source: Wikipedia.org'
-        },
-        xAxis: {
-            categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
-            tickmarkPlacement: 'on',
-            title: {
-                enabled: false
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Percent'
-            }
-        },
-        tooltip: {
-            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
-            shared: true
-        },
-        plotOptions: {
-            area: {
-                stacking: 'percent',
-                lineColor: '#ffffff',
-                lineWidth: 1,
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#ffffff'
-                }
-            }
-        },
-        series: [{
-            name: 'Asia',
-            data: [502, 635, 809, 947, 1402, 3634, 5268]
-        }, {
-            name: 'Africa',
-            data: [106, 107, 111, 133, 221, 767, 1766]
-        }, {
-            name: 'Europe',
-            data: [163, 203, 276, 408, 547, 729, 628]
-        }, {
-            name: 'America',
-            data: [18, 31, 54, 156, 339, 818, 1201]
-        }, {
-            name: 'Oceania',
-            data: [2, 2, 2, 6, 13, 30, 46]
-        }]
-    });
-});
-</script>
-<script src="http://code.highcharts.com/maps/highmaps.js"></script>
-<script src="http://code.highcharts.com/mapdata/countries/us/us-all.js"></script>	
-<script src="http://code.highcharts.com/maps/modules/data.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.prettyPhoto.js"></script>
+		<script src="js/jquery.isotope.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script type="text/javascript"
+			src="http://code.highcharts.com/modules/data.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<script type="text/javascript">
+		
+			function renderchart() {
+				var e = document.getElementById("cancertype");
+				var cancertype = e.options[e.selectedIndex].value;
 
-<script>
+				var f = document.getElementById("attribute");
+				var attribute = f.options[f.selectedIndex].value;
 
-$(function () {
+				//alert(cancertype);
+				//alert(attribute);
 
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=us-population-density.json&callback=?', function (data) {
+				if (cancertype == "breast" && attribute == "gender")
+					highcharts('data/genderdata_breast.csv', 'column',
+							'Gender Comparison for Breast Cancer');
+				else if (cancertype == "lung" && attribute == "gender")
+					highcharts('data/genderdata_res.csv', 'column',
+							'Gender Comparison for Respiratory Cancer');
+				else if (cancertype == "breast" && attribute == "gender_year")
+					highcharts('data/gender_basedonyear_bd.csv', 'column',
+							'Gender Comparison for Respiratory Cancer');
+				else if (cancertype == "lung" && attribute == "gender_year")
+					highcharts('data/gender_basedonyear_res.csv', 'column',
+							'Gender Comparison for Lung Cancer');
+				else if (cancertype == "lung" && attribute == "location")
+					highcharts('data/location_res.csv', 'pie',
+							'Location based Paitents Count');
+				else if (cancertype == "prostate" && attribute == "survival")
+					highcharts5();
+				else if (cancertype == "lung" && attribute == "survival")
+					highcharts4();
 
-        // Make codes uppercase to match the map data
-        $.each(data, function () {
-            this.code = this.code.toUpperCase();
-        });
+			}
 
-        // Instanciate the map
-        $('#chart2').highcharts('Map', {
+			function highcharts(path, ctype, ctext) {
+				$('#chart').empty();
+				$.get(path, function(csv) {
+					$('#chart').highcharts({
+						chart : {
+							type : ctype
+						},
+						data : {
+							csv : csv
+						},
+						title : {
+							text : ctext
+						},
+						yAxis : {
+							title : {
+								text : 'Units'
+							}
+						}
 
-            chart : {
-                borderWidth : 1
-            },
+					});
+				});
+			}
+			
+			function highcharts4() {
+				
 
-            title : {
-                text : 'US population density (/km²)'
-            },
+				var options = {
+					chart: {
+						renderTo: 'chart',
+						type: 'column'
+					},
+					title: {
+						text: 'Life Expectancy - Lung Cancer'
+					},
+					xAxis: {
+						categories: ['Age']
+						
+					},
+					yAxis: {
+						title: {
+							text: 'Average Months'
+						}
+					},
+					series: []
+				};
+				
+				
+				$.get('data/GroupByAge_AvgMonths_Respiratory.csv', function(data) {
+					// Split the lines
+					var lines = data.split('\n');
+					$.each(lines, function(lineNo, line) {
+						var items = line.split(',');
+						
+						// header line containes categories
+						if (lineNo == 0) {
+							$.each(items, function(itemNo, item) {
+								if (itemNo > 0) options.xAxis.categories.push(item);
+							});
+						}
+						
+						// the rest of the lines contain data with their name in the first position
+						else {
+							var series = { 
+								data: []
+							};
+							$.each(items, function(itemNo, item) {
+								if (itemNo == 0) {
+									series.name = item;
+								} else {
+									series.data.push(parseFloat(item));
+								}
+							});
+							
+							options.series.push(series);
 
-            legend: {
-                layout: 'horizontal',
-                borderWidth: 0,
-                backgroundColor: 'rgba(255,255,255,0.85)',
-                floating: true,
-                verticalAlign: 'top',
-                y: 25
-            },
+						}
+						
+					});
+					
+					var chart = new Highcharts.Chart(options);
+				});
+				
+				
+			}
+			
+			function highcharts5() {
+				
 
-            mapNavigation: {
-                enabled: true
-            },
+				var options = {
+					chart: {
+						renderTo: 'chart',
+						type: 'column'
+					},
+					title: {
+						text: 'Life Expectancy - Prostate Cancer'
+					},
+					xAxis: {
+						categories: ['Age']
+						
+					},
+					yAxis: {
+						title: {
+							text: 'Average Months'
+						}
+					},
+					series: []
+				};
+				
+				
+				$.get('data/GroupByAge_AvgMonths_Malegen.csv', function(data) {
+					// Split the lines
+					var lines = data.split('\n');
+					$.each(lines, function(lineNo, line) {
+						var items = line.split(',');
+						
+						// header line containes categories
+						if (lineNo == 0) {
+							$.each(items, function(itemNo, item) {
+								if (itemNo > 0) options.xAxis.categories.push(item);
+							});
+						}
+						
+						// the rest of the lines contain data with their name in the first position
+						else {
+							var series = { 
+								data: []
+							};
+							$.each(items, function(itemNo, item) {
+								if (itemNo == 0) {
+									series.name = item;
+								} else {
+									series.data.push(parseFloat(item));
+								}
+							});
+							
+							options.series.push(series);
 
-            colorAxis: {
-                min: 1,
-                type: 'logarithmic',
-                minColor: '#EEEEFF',
-                maxColor: '#000022',
-                stops: [
-                    [0, '#EFEFFF'],
-                    [0.67, '#4444FF'],
-                    [1, '#000022']
-                ]
-            },
-
-            series : [{
-                animation: {
-                    duration: 1000
-                },
-                data : data,
-                mapData: Highcharts.maps['countries/us/us-all'],
-                joinBy: ['postal-code', 'code'],
-                dataLabels: {
-                    enabled: true,
-                    color: 'white',
-                    format: '{point.code}'
-                },
-                name: 'Population density',
-                tooltip: {
-                    pointFormat: '{point.code}: {point.value}/km²'
-                }
-            }]
-        });
-    });
-});
-</script-->
-<script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/tableau_v8.js"></script>
-<script type="text/javascript">
-function initializeViz() {
-	  var placeholderDiv = document.getElementById("chart");
-	  var url = "https://public.tableau.com/views/ageatdiag/Sheet2?:embed=y&:showTabs=y&:display_count=yes";
-	  var options = {
-	    width: placeholderDiv.offsetWidth,
-	    height: placeholderDiv.offsetHeight,
-	    hideTabs: true,
-	    hideToolbar: true,
-	    onFirstInteractive: function () {
-	      workbook = viz.getWorkbook();
-	      activeSheet = workbook.getActiveSheet();
-	    }
-	  };
-	  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
-	} 
-</script>
-            </div><!--/.container-->
-    </section><!--/#feature-->
+						}
+						
+					});
+					
+					var chart = new Highcharts.Chart(options);
+				});
+				
+				
+			}
+			</script>
+	</div>
+	<!--/.container-->
+</section>
+<!--/#feature-->
 
 <% include footer %>

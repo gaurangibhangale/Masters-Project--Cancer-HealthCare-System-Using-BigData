@@ -4,7 +4,7 @@
 
 
 <section id="content">
-	<div class="container">
+	<div class="container" id="bladder">
 		<div class="row">
 			<div class="col-sm-3">
     <div class="sidebar-nav">
@@ -36,6 +36,8 @@
 
 				<div class="left wow fadeInDown" id="tab1">
 					<h2>What is Bladder Cancer ?</h2>
+					
+					
 					<p class="lead" >Cancer that forms in tissues of the bladder
 						(the organ that stores urine). Most bladder cancers are
 						transitional cell carcinomas (cancer that begins in cells that
@@ -240,6 +242,7 @@
 	</div>
 	<!--/.container-->
 </section>
+
 <!--/#feature-->
 
 
@@ -253,27 +256,11 @@
 <script src="js/wow.min.js"></script>
 <script>
 
-
-
-window.onscroll = function()
-{
-alert("he");
-	if( window.XMLHttpRequest )
-	{
-
-		if (document.documentElement.scrollTop > 221 || self.pageYOffset > 221) {
-
-			$('sidebar-nav').style.position = 'fixed';
-
-			$('sidebar-nav').style.top = '0';
-
-		} else if (document.documentElement.scrollTop < 221 || self.pageYOffset < 221) {
-
-			$('sidebar-nav').style.position = 'absolute';
-
-			$('sidebar-nav').style.top = '221px';
-	}
-}
+/* if (<%=data[0]%>="g.b@gmail.com") {
+	document.getElementById("bladder").setAttribute("contenteditable", "true");
+} else {
+	alert("go to hell");
+} */
 
 </script>
 

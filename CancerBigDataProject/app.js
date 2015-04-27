@@ -61,6 +61,8 @@ app.post('/addSymptoms',gaurangi.addSymptoms);
 //contactus and about us
 app.get('/contact-us',gaurangi.contactus);
 app.get('/about-us',gaurangi.aboutus);
+app.get('/admin',gaurangi.admin);
+app.post('/addinfo',gaurangi.addinfo);
 //cancer information
 app.get('/bladder-cancer',gaurangi.bladder);
 app.get('/breast-cancer',gaurangi.breast);
@@ -69,6 +71,16 @@ app.get('/lung-cancer',gaurangi.lung);
 app.get('/prostate-cancer',gaurangi.prostate);
 app.get('/vulvar-cancer',gaurangi.vulvar);
 app.get('/visualization',gaurangi.visualization);
+app.get('/maps',gaurangi.maps);
+app.post('/query',gaurangi.query);
+
+
+app.get('/data', function(req, res) {
+    fs.readFile('data/data.csv', 'utf8', function (err, data) {
+        res.send(data);
+    });
+});
+
 //cancer taxanomy
 app.get('/taxanomy',hanifa.taxanomy);
 

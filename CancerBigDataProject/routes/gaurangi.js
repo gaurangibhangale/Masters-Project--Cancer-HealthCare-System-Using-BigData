@@ -1,3 +1,5 @@
+var exec = require('child_process').execFile;
+
 exports.tracksymptoms = function(req, res) {
 	if (req.session.fname == undefined) {
 		res.redirect("/");
@@ -28,6 +30,103 @@ exports.visualization = function(req, res) {
 	})
 }
 
+exports.query = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset = "";
+	} else {
+		var sessionset = "set";
+	}
+	
+	var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+    		cancertype : input.cancertype,
+    		attribute : input.attribute
+            
+        };
+    //console.log("Performing Data Extract"+data.attribute+"  sdfs"+data.cancertype);
+	//var x="select bd."+data.attribute+" from "+data.cancertype +" where bd." + data.attribute +"<10;";
+    //var x="select bd."+data.attribute+" from "+data.cancertype +" limit 1;";
+	//var x= "select bd.age_at_diagnosis from bd where bd.age_at_diagnosis<40";
+    
+
+    var x= "select bd.race_ethnicity from bd";
+    
+    
+    console.log("Performing Data Extract"+x);
+    exec('FetchHiveData.exe',[x],function(err,data){
+        console.log(err);
+        console.log(data.toString());
+        console.log("Inside Fetch");
+    });
+    console.log("after fetch");
+    
+	res.render('visualization', {
+		title : 'visualization',
+		session1 : sessionset
+	})
+}
+
+
+exports.admin = function(req, res) {
+	if (req.session.fname == undefined) {
+		res.redirect("/");
+	} else {
+		var sessionset;
+		if (req.session.fname == undefined) {
+			var sessionset = "";
+		} else if(req.session.fname =='admin') {
+			var sessionset = "admin";
+		}
+
+		var connection = mysqldb.getConnection();
+		connection.connect();
+		connection.query("Select * from cancerinfo", function(err, rows) {
+			if (err)
+				console.log("Error fetching results : %s", err);
+			console.log("sessionset:"+sessionset);
+			res.render('admin', {
+				title : 'Admin Dashboard',
+				data : rows,
+				session1 : sessionset
+			});
+		});
+	}
+}
+
+mysqldb = require('./Connection.js');
+
+exports.addinfo = function(req, res) {
+	if (req.session.fname == "g") {
+		var input = JSON.parse(JSON.stringify(req.body));
+		var type=input.cancertype;
+		console.log(type);
+		var data = {
+			description : input.description,
+			symptoms : input.symptoms,
+			stages : input.stages,
+			treatment : input.treatment,
+		};
+		var connection = mysqldb.getConnection();
+		console.log(data);
+		connection.connect();
+
+		var query = connection.query("Update cancerinfo set ? where cancertype = ? ", [data, type],
+				function(err, rows) {
+					if (err) {
+						console.log("Error inserting : %s", err);
+						res.redirect('/');
+					}
+					// console.log(rows);
+				});
+		res.redirect('/');
+		// res.redirect('/ViewHistory');
+		// console.log(rows)
+		connection.end();
+	}
+}
+
+
 exports.contactus = function(req, res) {
 	res.render('contact-us', {
 		title : 'Contact Us'
@@ -41,28 +140,66 @@ exports.aboutus = function(req, res) {
 }
 
 exports.bladder = function(req, res) {
-	var sessionset;
-	if (req.session.fname == undefined) {
+	var sessionset, value;
+	if (req.session.email == "g.b@gmail.com") {
+		var sessionset = "set";
+		console.log("inside admin");
+		value = "admin";
+	}
+	else if (req.session.fname == undefined) {
 		var sessionset = "";
 	} else {
 		var sessionset = "set";
 	}
 	res.render('bladder-cancer', {
 		title : 'bladder-cancer',
-		session1 : sessionset
+		session1 : sessionset,
+		data : value
 	})
+	
+	
 }
+
 exports.breast = function(req, res) {
 	var sessionset;
 	if (req.session.fname == undefined) {
 		var sessionset = "";
-	} else {
+	} 
+	else {
 		var sessionset = "set";
 	}
 	res.render('breast-cancer', {
 		title : 'breast-cancer',
 		session1 : sessionset
 	})
+	
+	
+	
+	
+	/*	var connection = mysqldb.getConnection();
+
+		var sessionset;
+		if (req.session.fname == undefined) {
+			var sessionset = "";
+		} else {
+			var sessionset = "set";
+		}
+		connection.connect();
+		connection.query("Select * from breastcancer", function(err, rows) {
+			if (err)
+				console.log("Error fetching results : %s", err);
+			res.render('breast-cancer', {
+				title : 'breast-cancer',
+				data : rows,
+				session1 : sessionset
+			});
+		});
+		connection.end();*/
+	
+	
+	
+	
+	
 }
 exports.colorectal = function(req, res) {
 	var sessionset;
@@ -76,6 +213,19 @@ exports.colorectal = function(req, res) {
 		session1 : sessionset
 	})
 }
+exports.maps = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset = "";
+	} else {
+		var sessionset = "set";
+	}
+	res.render('maps', {
+		title : 'maps',
+		session1 : sessionset
+	})
+}
+
 exports.lung = function(req, res) {
 	var sessionset;
 	if (req.session.fname == undefined) {
@@ -143,6 +293,7 @@ exports.addSymptoms = function(req, res) {
 					}
 					// console.log(rows);
 				});
+		res.redirect('/');
 		// res.redirect('/ViewHistory');
 		// console.log(rows)
 		connection.end();
