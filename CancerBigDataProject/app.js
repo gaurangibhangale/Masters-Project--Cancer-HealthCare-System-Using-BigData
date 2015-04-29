@@ -71,6 +71,7 @@ app.get('/lung-cancer',gaurangi.lung);
 app.get('/prostate-cancer',gaurangi.prostate);
 app.get('/vulvar-cancer',gaurangi.vulvar);
 app.get('/visualization',gaurangi.visualization);
+app.get('/visualization_map',gaurangi.visualization_map);
 app.get('/maps',gaurangi.maps);
 app.post('/query',gaurangi.query);
 

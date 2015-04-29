@@ -30,6 +30,19 @@ exports.visualization = function(req, res) {
 	})
 }
 
+exports.visualization_map = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset = "";
+	} else {
+		var sessionset = "set";
+	}
+	res.render('visualization_map', {
+		title : 'visualization_map',
+		session1 : sessionset
+	})
+}
+
 exports.query = function(req, res) {
 	var sessionset;
 	if (req.session.fname == undefined) {
