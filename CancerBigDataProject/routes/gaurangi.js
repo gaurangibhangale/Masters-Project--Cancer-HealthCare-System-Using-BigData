@@ -153,21 +153,16 @@ exports.aboutus = function(req, res) {
 }
 
 exports.bladder = function(req, res) {
-	var sessionset, value;
-	if (req.session.email == "g.b@gmail.com") {
-		var sessionset = "set";
-		console.log("inside admin");
-		value = "admin";
-	}
-	else if (req.session.fname == undefined) {
+	var sessionset;
+	if (req.session.fname == undefined) {
 		var sessionset = "";
-	} else {
+	} 
+	else {
 		var sessionset = "set";
 	}
 	res.render('bladder-cancer', {
 		title : 'bladder-cancer',
-		session1 : sessionset,
-		data : value
+		session1 : sessionset
 	})
 	
 	

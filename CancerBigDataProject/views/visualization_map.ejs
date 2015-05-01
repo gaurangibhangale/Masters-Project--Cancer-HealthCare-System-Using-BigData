@@ -2,16 +2,219 @@
 <link rel="stylesheet" type="text/css" href="http://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
 <section id="feature" class="transparent-bg">
 	<div class="container">
+	<label>Cancer Count Per State</label> 
+	<input type="radio" name="cancertype" id="breast" value="breast" checked>Breast Cancer
+	<input type="radio" name="cancertype" id="lung" value="lung">Lung Cancer
+	<input type="radio" name="cancertype" id="bladder" value="bladder">Bladder Cancer
+	<input type="radio" name="cancertype" id="colorectal" value="colorectal">Colorectal Cancer
+	<input type="radio" name="cancertype" id="prostate" value="prostate">Prostate Cancer
+	<input type="radio" name="cancertype" id="vulvar" value="vulvar">Vulvar Cancer
+	<br>
+	<br>
+	<label>Death Count Per State, Gender</label> 
+	<input type="radio" name="cancertype" id="breastd" value="breast">Breast Cancer
+	<input type="radio" name="cancertype" id="lungd" value="lung">Lung Cancer
+	<input type="radio" name="cancertype" id="bladderd" value="bladder">Bladder Cancer
+	<input type="radio" name="cancertype" id="colorectald" value="colorectal">Colorectal Cancer
+	<input type="radio" name="cancertype" id="prostated" value="prostate">Prostate Cancer
+	<input type="radio" name="cancertype" id="vulvard" value="vulvar">Vulvar Cancer
+	<br><br>
+	<button onclick="check()">Submit</button>
+	<br><br>
+	
 <div id="container"></div>
+</div>
+
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/data.js"></script>
 <script src="http://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="http://code.highcharts.com/mapdata/custom/world.js"></script>
+<script src="http://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
 <script>
-$(function () {
+//renderchart('data/breastcancerdata.json');
+function check()
+{
+	
+	if(document.getElementById('breast').checked) {
+		
+	  renderchart('data/breastcancerdata.json','#FFD6EB', '#FF99CC','#FF3399', 'Breast Death Count Per State, Gender');
+	}else if(document.getElementById('lung').checked) {
+	  renderchart('data/lungcancerdata.json', '#CCD6CC', '#809980','#003300', 'Lung Death Count Per State, Gender');
+	}else if(document.getElementById('bladder').checked) {
+	  renderchart('data/bladdercancerdata.json', '#F5E6EB', '#CC8099','#4C001A', 'Bladder Death Count Per State, Gender');
+	}else if(document.getElementById('colorectal').checked) {
+		 renderchart('data/colorectalcancerdata.json', '#EBE0D6', '#CCB299','#996633', 'Colorectal Death Count Per State, Gender');
+	}else if(document.getElementById('prostate').checked) {
+		 renderchart('data/prostatecancerdata.json', '#CCEBCC', '#66C266','#009900', 'Prostate Death Count Per State, Gender');
+	}else if(document.getElementById('vulvar').checked) {
+		 renderchart('data/vulvarcancerdata.json', '#EFEFFF', '#B4B4FF','#1717FF', 'Vulvar Death Count Per State, Gender');
+	}
+	
+	
+	else if(document.getElementById('breastd').checked) {
+		
+		  renderdeathchart('data/breastdeath.json','#FFD6EB', '#FF99CC','#FF3399', 'Breast Death Cancer Count Per State');
+		}else if(document.getElementById('lungd').checked) {
+			renderdeathchart('data/lungdeath1.json', '#CCD6CC', '#809980','#003300', 'Lung Cancer Count Per State');
+		}else if(document.getElementById('bladderd').checked) {
+			renderdeathchart('data/bladderdeath.json', '#F5E6EB', '#CC8099','#4C001A', 'Bladder Cancer Count Per State');
+		}else if(document.getElementById('colorectald').checked) {
+			renderdeathchart('data/colorectaldeath.json', '#EBE0D6', '#CCB299','#996633', 'Colorectal Cancer Count Per State');
+		}else if(document.getElementById('prostated').checked) {
+			renderdeathchart('data/prostatedeath.json', '#CCEBCC', '#66C266','#009900', 'Prostate Cancer Count Per State');
+		}else if(document.getElementById('vulvard').checked) {
+			renderdeathchart('data/vulvardeath.json', '#EFEFFF', '#B4B4FF','#1717FF', 'Vulvar Cancer Count Per State');
+		}
+	
+}
 
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+function renderchart(path, min, mid, max, ctext) {
+    $.getJSON(path, function (data) {
+
+        // Make codes uppercase to match the map data
+       /*  $.each(data, function () {
+            this.code = this.code.toUpperCase();
+        }); */
+
+        // Instanciate the map
+        $('#container').highcharts('Map', {
+
+            chart : {
+                borderWidth : 1
+            },
+
+            title : {
+                text : ctext
+            },
+
+            legend: {
+                layout: 'horizontal',
+                borderWidth: 0,
+                backgroundColor: 'rgba(255,255,255,0.85)',
+                floating: true,
+                verticalAlign: 'top',
+                y: 25
+            },
+
+            mapNavigation: {
+                enabled: true
+            },
+
+            colorAxis: {
+                min: 1,
+                type: 'logarithmic',
+                minColor: '#EEEEFF',
+                maxColor: '#000022',
+                borderColor: '#000000',
+                stops: [
+                    [0, min],
+                    [0.60, mid],
+                    [1, max]
+                ]
+            },
+            
+
+            series : [{
+                animation: {
+                    duration: 1000
+                },
+                data : data,
+                mapData: Highcharts.maps['countries/us/us-all'],
+                joinBy: ['postal-code', 'code'],
+                dataLabels: {
+                    enabled: true,
+                    color: 'white',
+                    format: '{point.code}'
+                },
+                name: 'No of Cases in',
+                tooltip: {
+                  //  pointFormat: '{point.code}: {point.value}',
+                    pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>'
+                        + ' {point.code}: <b>{point.value}</b>',
+                    positioner: function () {
+                        return { x: 1000, y: 1000 };
+                    }
+                }
+            }]
+        });
+    });
+}
+    function renderdeathchart(path, min, mid, max, ctext) {
+        $.getJSON(path, function (data) {
+
+            // Make codes uppercase to match the map data
+           /*  $.each(data, function () {
+                this.code = this.code.toUpperCase();
+            }); */
+
+            // Instanciate the map
+            $('#container').highcharts('Map', {
+
+                chart : {
+                    borderWidth : 1
+                },
+
+                title : {
+                    text : ctext
+                },
+
+                legend: {
+                    layout: 'horizontal',
+                    borderWidth: 0,
+                    backgroundColor: 'rgba(255,255,255,0.85)',
+                    floating: true,
+                    verticalAlign: 'top',
+                    y: 25
+                },
+
+                mapNavigation: {
+                    enabled: true
+                },
+
+                colorAxis: {
+                    min: 1,
+                    type: 'logarithmic',
+                    minColor: '#EEEEFF',
+                    maxColor: '#000022',
+                    stops: [
+                        [0, min],
+                        [0.60, mid],
+                        [1, max]
+                    ]
+                },
+
+                series : [{
+                    animation: {
+                        duration: 1000
+                    },
+                    data : data,
+                    mapData: Highcharts.maps['countries/us/us-all'],
+                    joinBy: ['postal-code', 'state'],
+                    dataLabels: {
+                        enabled: true,
+                        color: 'white',
+                        format: '{point.state}'
+                    },
+                    name: 'No of Cases in',
+                    tooltip: {
+                      //  pointFormat: '{point.code}: {point.value}',
+                        pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>'
+                            + ' {point.state}: <b> Total: {point.count}</b><br><b> Male: {point.male}</b> <b> Female: {point.female}</b>',
+                        positioner: function () {
+                            return { x: 0, y: 100 };
+                        }
+                    }
+                }]
+            });
+        });
+    }
+
+/* $(function () {
+
+    $.getJSON('data/countrymap.json', function (data) {
 
         // Add lower case codes to the data set for inclusion in the tooltip.pointFormat
         $.each(data, function () {
@@ -25,22 +228,6 @@ $(function () {
                 text: 'Cancer Demographics'
             },
 
-            legend: {
-                title: {
-                    text: 'Population density per km²',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-                    }
-                }
-            },
-
-            mapNavigation: {
-                enabled: true,
-                buttonOptions: {
-                    verticalAlign: 'bottom'
-                }
-            },
-
             tooltip: {
                 backgroundColor: 'none',
                 borderWidth: 0,
@@ -48,23 +235,19 @@ $(function () {
                 useHTML: true,
                 padding: 0,
                 pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>'
-                    + ' {point.name}: <b>{point.value}</b>/km²',
+                    + ' {point.name}: <b>{point.value}</b>',
                 positioner: function () {
                     return { x: 0, y: 250 };
                 }
             },
 
-            colorAxis: {
-                min: 1,
-                max: 1000,
-                type: 'logarithmic'
-            },
+          
 
             series : [{
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
-                name: 'Population density',
+                name: 'Cancer density',
                 states: {
                     hover: {
                         color: '#BADA55'
@@ -73,8 +256,9 @@ $(function () {
             }]
         });
     });
-});
+}); */
 </script>
+
 </div>
 	<!--/.container-->
 </section>

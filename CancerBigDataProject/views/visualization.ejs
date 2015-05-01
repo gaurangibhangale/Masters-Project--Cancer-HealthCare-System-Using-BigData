@@ -27,6 +27,9 @@
 							<option value="gender">Gender</option>
 							<option value="location">Location</option>
 							<option value="survival">Life expectancy</option>
+							<option value="alive">Survivors</option>
+							<option value="dead">Deaths</option>
+							<option value="count">Cases</option>
 					</select></td>
 				</tr>
 			</div>
@@ -40,7 +43,7 @@
 		<div id="chart"
 			style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
 		
-
+	<div id="container"></div>
 
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -85,6 +88,51 @@
 					highcharts5();
 				else if (cancertype == "lung" && attribute == "survival")
 					highcharts4();
+				else if (cancertype == "bladder" && attribute == "survival")
+					highcharts6();
+				else if (cancertype == "vulvar" && attribute == "survival")
+					highcharts7();
+				else if (cancertype == "breast" && attribute == "survival")
+					highcharts8();
+				else if (cancertype == "colorectal" && attribute == "survival")
+					highcharts9();
+				else if (cancertype == "bladder" && attribute == "alive")
+					highcharts10();
+				else if (cancertype == "breast" && attribute == "alive")
+					highcharts11();
+				else if (cancertype == "colorectal" && attribute == "alive")
+					highcharts12();
+				else if (cancertype == "vulvar" && attribute == "alive")
+					highcharts13();
+				else if (cancertype == "prostate" && attribute == "alive")
+					highcharts14();
+				else if (cancertype == "lung" && attribute == "alive")
+					highcharts15();
+				else if (cancertype == "bladder" && attribute == "dead")
+					highcharts16();
+				else if (cancertype == "breast" && attribute == "dead")
+					highcharts17();
+				else if (cancertype == "colorectal" && attribute == "dead")
+					highcharts18();
+				else if (cancertype == "vulvar" && attribute == "dead")
+					highcharts19();
+				else if (cancertype == "prostate" && attribute == "dead")
+					highcharts20();
+				else if (cancertype == "lung" && attribute == "dead")
+					highcharts21();
+				else if (cancertype == "bladder" && attribute == "count")
+					highcharts22();
+				else if (cancertype == "breast" && attribute == "count")
+					highcharts23();
+				else if (cancertype == "colorectal" && attribute == "count")
+					highcharts24();
+				else if (cancertype == "vulvar" && attribute == "count")
+					highcharts25();
+				else if (cancertype == "prostate" && attribute == "count")
+					highcharts26();
+				else if (cancertype == "lung" && attribute == "count")
+					highcharts27();
+
 
 			}
 
@@ -234,7 +282,1386 @@
 				
 				
 			}
+function highcharts6() {
+				
+
+				var options = {
+					chart: {
+						renderTo: 'chart',
+						type: 'column'
+					},
+					title: {
+						text: 'Life Expectancy - Bladder Cancer'
+					},
+					xAxis: {
+						categories: ['Age']
+						
+					},
+					yAxis: {
+						title: {
+							text: 'Average Months'
+						}
+					},
+					series: []
+				};
+				
+				
+				$.get('data/GroupByAge_AvgMonths_Bladder.csv', function(data) {
+					// Split the lines
+					var lines = data.split('\n');
+					$.each(lines, function(lineNo, line) {
+						var items = line.split(',');
+						
+						// header line containes categories
+						if (lineNo == 0) {
+							$.each(items, function(itemNo, item) {
+								if (itemNo > 0) options.xAxis.categories.push(item);
+							});
+						}
+						
+						// the rest of the lines contain data with their name in the first position
+						else {
+							var series = { 
+								data: []
+							};
+							$.each(items, function(itemNo, item) {
+								if (itemNo == 0) {
+									series.name = item;
+								} else {
+									series.data.push(parseFloat(item));
+								}
+							});
+							
+							options.series.push(series);
+
+						}
+						
+					});
+					
+					var chart = new Highcharts.Chart(options);
+				});
+				
+				
+			}
+		
+		function highcharts7() {
+			
+
+			var options = {
+				chart: {
+					renderTo: 'chart',
+					type: 'column'
+				},
+				title: {
+					text: 'Life Expectancy - Vulvar Cancer'
+				},
+				xAxis: {
+					categories: ['Age']
+					
+				},
+				yAxis: {
+					title: {
+						text: 'Average Months'
+					}
+				},
+				series: []
+			};
+			
+			
+			$.get('data/GroupByAge_AvgMonths_Femgen.csv', function(data) {
+				// Split the lines
+				var lines = data.split('\n');
+				$.each(lines, function(lineNo, line) {
+					var items = line.split(',');
+					
+					// header line containes categories
+					if (lineNo == 0) {
+						$.each(items, function(itemNo, item) {
+							if (itemNo > 0) options.xAxis.categories.push(item);
+						});
+					}
+					
+					// the rest of the lines contain data with their name in the first position
+					else {
+						var series = { 
+							data: []
+						};
+						$.each(items, function(itemNo, item) {
+							if (itemNo == 0) {
+								series.name = item;
+							} else {
+								series.data.push(parseFloat(item));
+							}
+						});
+						
+						options.series.push(series);
+
+					}
+					
+				});
+				
+				var chart = new Highcharts.Chart(options);
+			});
+			
+			
+		}
+		
+		function highcharts8() {
+			
+
+			var options = {
+				chart: {
+					renderTo: 'chart',
+					type: 'column'
+				},
+				title: {
+					text: 'Life Expectancy - Breast Cancer'
+				},
+				xAxis: {
+					categories: ['Age']
+					
+				},
+				yAxis: {
+					title: {
+						text: 'Average Months'
+					}
+				},
+				series: []
+			};
+			
+			
+			$.get('data/GroupByAge_AvgMonths_Breast.csv', function(data) {
+				// Split the lines
+				var lines = data.split('\n');
+				$.each(lines, function(lineNo, line) {
+					var items = line.split(',');
+					
+					// header line containes categories
+					if (lineNo == 0) {
+						$.each(items, function(itemNo, item) {
+							if (itemNo > 0) options.xAxis.categories.push(item);
+						});
+					}
+					
+					// the rest of the lines contain data with their name in the first position
+					else {
+						var series = { 
+							data: []
+						};
+						$.each(items, function(itemNo, item) {
+							if (itemNo == 0) {
+								series.name = item;
+							} else {
+								series.data.push(parseFloat(item));
+							}
+						});
+						
+						options.series.push(series);
+
+					}
+					
+				});
+				
+				var chart = new Highcharts.Chart(options);
+			});
+			
+			
+		}
+
+		function highcharts9() {
+			
+
+			var options = {
+				chart: {
+					renderTo: 'chart',
+					type: 'column'
+				},
+				title: {
+					text: 'Life Expectancy - Colorectal Cancer'
+				},
+				xAxis: {
+					categories: ['Age']
+					
+				},
+				yAxis: {
+					title: {
+						text: 'Average Months'
+					}
+				},
+				series: []
+			};
+			
+			
+			$.get('data/GroupByAge_AvgMonths_Colrect.csv', function(data) {
+				// Split the lines
+				var lines = data.split('\n');
+				$.each(lines, function(lineNo, line) {
+					var items = line.split(',');
+					
+					// header line containes categories
+					if (lineNo == 0) {
+						$.each(items, function(itemNo, item) {
+							if (itemNo > 0) options.xAxis.categories.push(item);
+						});
+					}
+					
+					// the rest of the lines contain data with their name in the first position
+					else {
+						var series = { 
+							data: []
+						};
+						$.each(items, function(itemNo, item) {
+							if (itemNo == 0) {
+								series.name = item;
+							} else {
+								series.data.push(parseFloat(item));
+							}
+						});
+						
+						options.series.push(series);
+
+					}
+					
+				});
+				
+				var chart = new Highcharts.Chart(options);
+			});
+			
+			
+		}
+		
+	function highcharts10() {
+			
+
+			var options = {
+				chart: {
+					renderTo: 'chart',
+					type: 'column'
+				},
+				title: {
+					text: 'Survival Count - Bladder Cancer'
+				},
+				xAxis: {
+					categories: ['Year']
+					
+				},
+				yAxis: {
+					title: {
+						text: 'No. of Survivors'
+					}
+				},
+				series: []
+			};
+			
+			
+			$.get('data/Alive_Count_For_Bladder.csv', function(data) {
+				// Split the lines
+				var lines = data.split('\n');
+				$.each(lines, function(lineNo, line) {
+					var items = line.split(',');
+					
+					// header line containes categories
+					if (lineNo == 0) {
+						$.each(items, function(itemNo, item) {
+							if (itemNo > 0) options.xAxis.categories.push(item);
+						});
+					}
+					
+					// the rest of the lines contain data with their name in the first position
+					else {
+						var series = { 
+							data: []
+						};
+						$.each(items, function(itemNo, item) {
+							if (itemNo == 0) {
+								series.name = item;
+							} else {
+								series.data.push(parseFloat(item));
+							}
+						});
+						
+						options.series.push(series);
+
+					}
+					
+				});
+				
+				var chart = new Highcharts.Chart(options);
+			});
+			
+			
+		}
+
+	
+	function highcharts11() {
+		
+
+		var options = {
+			chart: {
+				renderTo: 'chart',
+				type: 'column'
+			},
+			title: {
+				text: 'Survival Count - Breast Cancer'
+			},
+			xAxis: {
+				categories: ['Year']
+				
+			},
+			yAxis: {
+				title: {
+					text: 'No. of Survivors'
+				}
+			},
+			series: []
+		};
+		
+		
+		$.get('data/Alive_Count_For_Breast.csv', function(data) {
+			// Split the lines
+			var lines = data.split('\n');
+			$.each(lines, function(lineNo, line) {
+				var items = line.split(',');
+				
+				// header line containes categories
+				if (lineNo == 0) {
+					$.each(items, function(itemNo, item) {
+						if (itemNo > 0) options.xAxis.categories.push(item);
+					});
+				}
+				
+				// the rest of the lines contain data with their name in the first position
+				else {
+					var series = { 
+						data: []
+					};
+					$.each(items, function(itemNo, item) {
+						if (itemNo == 0) {
+							series.name = item;
+						} else {
+							series.data.push(parseFloat(item));
+						}
+					});
+					
+					options.series.push(series);
+
+				}
+				
+			});
+			
+			var chart = new Highcharts.Chart(options);
+		});
+		
+		
+	}
+
+	function highcharts12() {
+		
+
+		var options = {
+			chart: {
+				renderTo: 'chart',
+				type: 'column'
+			},
+			title: {
+				text: 'Survival Count - Colorectal Cancer'
+			},
+			xAxis: {
+				categories: ['Year']
+				
+			},
+			yAxis: {
+				title: {
+					text: 'No. of Survivors'
+				}
+			},
+			series: []
+		};
+		
+		
+		$.get('data/Alive_Count_For_Colrect.csv', function(data) {
+			// Split the lines
+			var lines = data.split('\n');
+			$.each(lines, function(lineNo, line) {
+				var items = line.split(',');
+				
+				// header line containes categories
+				if (lineNo == 0) {
+					$.each(items, function(itemNo, item) {
+						if (itemNo > 0) options.xAxis.categories.push(item);
+					});
+				}
+				
+				// the rest of the lines contain data with their name in the first position
+				else {
+					var series = { 
+						data: []
+					};
+					$.each(items, function(itemNo, item) {
+						if (itemNo == 0) {
+							series.name = item;
+						} else {
+							series.data.push(parseFloat(item));
+						}
+					});
+					
+					options.series.push(series);
+
+				}
+				
+			});
+			
+			var chart = new Highcharts.Chart(options);
+		});
+		
+		
+	}
+	
+function highcharts13() {
+		
+
+		var options = {
+			chart: {
+				renderTo: 'chart',
+				type: 'column'
+			},
+			title: {
+				text: 'Survival Count - Vulvar Cancer'
+			},
+			xAxis: {
+				categories: ['Year']
+				
+			},
+			yAxis: {
+				title: {
+					text: 'No. of Survivors'
+				}
+			},
+			series: []
+		};
+		
+		
+		$.get('data/Alive_Count_For_Femgen.csv', function(data) {
+			// Split the lines
+			var lines = data.split('\n');
+			$.each(lines, function(lineNo, line) {
+				var items = line.split(',');
+				
+				// header line containes categories
+				if (lineNo == 0) {
+					$.each(items, function(itemNo, item) {
+						if (itemNo > 0) options.xAxis.categories.push(item);
+					});
+				}
+				
+				// the rest of the lines contain data with their name in the first position
+				else {
+					var series = { 
+						data: []
+					};
+					$.each(items, function(itemNo, item) {
+						if (itemNo == 0) {
+							series.name = item;
+						} else {
+							series.data.push(parseFloat(item));
+						}
+					});
+					
+					options.series.push(series);
+
+				}
+				
+			});
+			
+			var chart = new Highcharts.Chart(options);
+		});
+		
+		
+	}
+	
+	
+	function highcharts14() {
+	
+
+	var options = {
+		chart: {
+			renderTo: 'chart',
+			type: 'column'
+		},
+		title: {
+			text: 'Survival Count - Prostate Cancer'
+		},
+		xAxis: {
+			categories: ['Year']
+			
+		},
+		yAxis: {
+			title: {
+				text: 'No. of Survivors'
+			}
+		},
+		series: []
+	};
+	
+	
+	$.get('data/Alive_Count_For_Malegen.csv', function(data) {
+		// Split the lines
+		var lines = data.split('\n');
+		$.each(lines, function(lineNo, line) {
+			var items = line.split(',');
+			
+			// header line containes categories
+			if (lineNo == 0) {
+				$.each(items, function(itemNo, item) {
+					if (itemNo > 0) options.xAxis.categories.push(item);
+				});
+			}
+			
+			// the rest of the lines contain data with their name in the first position
+			else {
+				var series = { 
+					data: []
+				};
+				$.each(items, function(itemNo, item) {
+					if (itemNo == 0) {
+						series.name = item;
+					} else {
+						series.data.push(parseFloat(item));
+					}
+				});
+				
+				options.series.push(series);
+
+			}
+			
+		});
+		
+		var chart = new Highcharts.Chart(options);
+	});
+	
+	
+}
+	
+	
+	function highcharts15() {
+		
+
+		var options = {
+			chart: {
+				renderTo: 'chart',
+				type: 'column'
+			},
+			title: {
+				text: 'Survival Count - Lung Cancer'
+			},
+			xAxis: {
+				categories: ['Year']
+				
+			},
+			yAxis: {
+				title: {
+					text: 'No. of Survivors'
+				}
+			},
+			series: []
+		};
+		
+		
+		$.get('data/Alive_Count_For_Respiratory.csv', function(data) {
+			// Split the lines
+			var lines = data.split('\n');
+			$.each(lines, function(lineNo, line) {
+				var items = line.split(',');
+				
+				// header line containes categories
+				if (lineNo == 0) {
+					$.each(items, function(itemNo, item) {
+						if (itemNo > 0) options.xAxis.categories.push(item);
+					});
+				}
+				
+				// the rest of the lines contain data with their name in the first position
+				else {
+					var series = { 
+						data: []
+					};
+					$.each(items, function(itemNo, item) {
+						if (itemNo == 0) {
+							series.name = item;
+						} else {
+							series.data.push(parseFloat(item));
+						}
+					});
+					
+					options.series.push(series);
+
+				}
+				
+			});
+			
+			var chart = new Highcharts.Chart(options);
+		});
+		
+		
+	}
+	
+	
+			function highcharts16() {
+		
+
+		var options = {
+			chart: {
+				renderTo: 'chart',
+				type: 'column'
+			},
+			title: {
+				text: 'Mortality Count - Bladder Cancer'
+			},
+			xAxis: {
+				categories: ['Year']
+				
+			},
+			yAxis: {
+				title: {
+					text: 'No. of Deaths'
+				}
+			},
+			series: []
+		};
+		
+		
+		$.get('data/Death_Count_For_Bladder.csv', function(data) {
+			// Split the lines
+			var lines = data.split('\n');
+			$.each(lines, function(lineNo, line) {
+				var items = line.split(',');
+				
+				// header line containes categories
+				if (lineNo == 0) {
+					$.each(items, function(itemNo, item) {
+						if (itemNo > 0) options.xAxis.categories.push(item);
+					});
+				}
+				
+				// the rest of the lines contain data with their name in the first position
+				else {
+					var series = { 
+						data: []
+					};
+					$.each(items, function(itemNo, item) {
+						if (itemNo == 0) {
+							series.name = item;
+						} else {
+							series.data.push(parseFloat(item));
+						}
+					});
+					
+					options.series.push(series);
+
+				}
+				
+			});
+			
+			var chart = new Highcharts.Chart(options);
+		});
+		
+		
+	}
+			
+			function highcharts17() {
+				
+
+				var options = {
+					chart: {
+						renderTo: 'chart',
+						type: 'column'
+					},
+					title: {
+						text: 'Mortality Count - Breast Cancer'
+					},
+					xAxis: {
+						categories: ['Year']
+						
+					},
+					yAxis: {
+						title: {
+							text: 'No. of Deaths'
+						}
+					},
+					series: []
+				};
+				
+				
+				$.get('data/Death_Count_For_Breast.csv', function(data) {
+					// Split the lines
+					var lines = data.split('\n');
+					$.each(lines, function(lineNo, line) {
+						var items = line.split(',');
+						
+						// header line containes categories
+						if (lineNo == 0) {
+							$.each(items, function(itemNo, item) {
+								if (itemNo > 0) options.xAxis.categories.push(item);
+							});
+						}
+						
+						// the rest of the lines contain data with their name in the first position
+						else {
+							var series = { 
+								data: []
+							};
+							$.each(items, function(itemNo, item) {
+								if (itemNo == 0) {
+									series.name = item;
+								} else {
+									series.data.push(parseFloat(item));
+								}
+							});
+							
+							options.series.push(series);
+
+						}
+						
+					});
+					
+					var chart = new Highcharts.Chart(options);
+				});
+				
+				
+			}
+
+			
+			
+
+			function highcharts18() {
+				
+
+				var options = {
+					chart: {
+						renderTo: 'chart',
+						type: 'column'
+					},
+					title: {
+						text: 'Mortality Count - Colorectal Cancer'
+					},
+					xAxis: {
+						categories: ['Year']
+						
+					},
+					yAxis: {
+						title: {
+							text: 'No. of Deaths'
+						}
+					},
+					series: []
+				};
+				
+				
+				$.get('data/Death_Count_For_Colrect.csv', function(data) {
+					// Split the lines
+					var lines = data.split('\n');
+					$.each(lines, function(lineNo, line) {
+						var items = line.split(',');
+						
+						// header line containes categories
+						if (lineNo == 0) {
+							$.each(items, function(itemNo, item) {
+								if (itemNo > 0) options.xAxis.categories.push(item);
+							});
+						}
+						
+						// the rest of the lines contain data with their name in the first position
+						else {
+							var series = { 
+								data: []
+							};
+							$.each(items, function(itemNo, item) {
+								if (itemNo == 0) {
+									series.name = item;
+								} else {
+									series.data.push(parseFloat(item));
+								}
+							});
+							
+							options.series.push(series);
+
+						}
+						
+					});
+					
+					var chart = new Highcharts.Chart(options);
+				});
+				
+				
+			}
+			
+function highcharts19() {
+				
+
+				var options = {
+					chart: {
+						renderTo: 'chart',
+						type: 'column'
+					},
+					title: {
+						text: 'Mortality Count - Vulvar Cancer'
+					},
+					xAxis: {
+						categories: ['Year']
+						
+					},
+					yAxis: {
+						title: {
+							text: 'No. of Deaths'
+						}
+					},
+					series: []
+				};
+				
+				
+				$.get('data/Death_Count_For_Femgen.csv', function(data) {
+					// Split the lines
+					var lines = data.split('\n');
+					$.each(lines, function(lineNo, line) {
+						var items = line.split(',');
+						
+						// header line containes categories
+						if (lineNo == 0) {
+							$.each(items, function(itemNo, item) {
+								if (itemNo > 0) options.xAxis.categories.push(item);
+							});
+						}
+						
+						// the rest of the lines contain data with their name in the first position
+						else {
+							var series = { 
+								data: []
+							};
+							$.each(items, function(itemNo, item) {
+								if (itemNo == 0) {
+									series.name = item;
+								} else {
+									series.data.push(parseFloat(item));
+								}
+							});
+							
+							options.series.push(series);
+
+						}
+						
+					});
+					
+					var chart = new Highcharts.Chart(options);
+				});
+				
+				
+			}
+			
+function highcharts20() {
+	
+
+	var options = {
+		chart: {
+			renderTo: 'chart',
+			type: 'column'
+		},
+		title: {
+			text: 'Mortality Count - Prostate Cancer'
+		},
+		xAxis: {
+			categories: ['Year']
+			
+		},
+		yAxis: {
+			title: {
+				text: 'No. of Deaths'
+			}
+		},
+		series: []
+	};
+	
+	
+	$.get('data/Death_Count_For_Malegen.csv', function(data) {
+		// Split the lines
+		var lines = data.split('\n');
+		$.each(lines, function(lineNo, line) {
+			var items = line.split(',');
+			
+			// header line containes categories
+			if (lineNo == 0) {
+				$.each(items, function(itemNo, item) {
+					if (itemNo > 0) options.xAxis.categories.push(item);
+				});
+			}
+			
+			// the rest of the lines contain data with their name in the first position
+			else {
+				var series = { 
+					data: []
+				};
+				$.each(items, function(itemNo, item) {
+					if (itemNo == 0) {
+						series.name = item;
+					} else {
+						series.data.push(parseFloat(item));
+					}
+				});
+				
+				options.series.push(series);
+
+			}
+			
+		});
+		
+		var chart = new Highcharts.Chart(options);
+	});
+	
+	
+}
+
+
+				function highcharts21() {
+	
+
+	var options = {
+		chart: {
+			renderTo: 'chart',
+			type: 'column'
+		},
+		title: {
+			text: 'Mortality Count - Lung Cancer'
+		},
+		xAxis: {
+			categories: ['Year']
+			
+		},
+		yAxis: {
+			title: {
+				text: 'No. of Deaths'
+			}
+		},
+		series: []
+	};
+	
+	
+	$.get('data/Death_Count_For_Respiratory.csv', function(data) {
+		// Split the lines
+		var lines = data.split('\n');
+		$.each(lines, function(lineNo, line) {
+			var items = line.split(',');
+			
+			// header line containes categories
+			if (lineNo == 0) {
+				$.each(items, function(itemNo, item) {
+					if (itemNo > 0) options.xAxis.categories.push(item);
+				});
+			}
+			
+			// the rest of the lines contain data with their name in the first position
+			else {
+				var series = { 
+					data: []
+				};
+				$.each(items, function(itemNo, item) {
+					if (itemNo == 0) {
+						series.name = item;
+					} else {
+						series.data.push(parseFloat(item));
+					}
+				});
+				
+				options.series.push(series);
+
+			}
+			
+		});
+		
+		var chart = new Highcharts.Chart(options);
+	});
+	
+	
+}
+				
+				
+				
+				function highcharts22() {
+					
+
+					var options = {
+						chart: {
+							renderTo: 'chart',
+							type: 'column'
+						},
+						title: {
+							text: 'Case Count per Year - Bladder Cancer'
+						},
+						xAxis: {
+							categories: ['Year']
+							
+						},
+						yAxis: {
+							title: {
+								text: 'No. of Cases'
+							}
+						},
+						series: []
+					};
+					
+					
+					$.get('data/Count_For_Year_Bladder.csv', function(data) {
+						// Split the lines
+						var lines = data.split('\n');
+						$.each(lines, function(lineNo, line) {
+							var items = line.split(',');
+							
+							// header line containes categories
+							if (lineNo == 0) {
+								$.each(items, function(itemNo, item) {
+									if (itemNo > 0) options.xAxis.categories.push(item);
+								});
+							}
+							
+							// the rest of the lines contain data with their name in the first position
+							else {
+								var series = { 
+									data: []
+								};
+								$.each(items, function(itemNo, item) {
+									if (itemNo == 0) {
+										series.name = item;
+									} else {
+										series.data.push(parseFloat(item));
+									}
+								});
+								
+								options.series.push(series);
+
+							}
+							
+						});
+						
+						var chart = new Highcharts.Chart(options);
+					});
+					
+					
+				}
+				
+				
+function highcharts23() {
+					
+
+					var options = {
+						chart: {
+							renderTo: 'chart',
+							type: 'column'
+						},
+						title: {
+							text: 'Case Count per Year - Breast Cancer'
+						},
+						xAxis: {
+							categories: ['Year']
+							
+						},
+						yAxis: {
+							title: {
+								text: 'No. of Cases'
+							}
+						},
+						series: []
+					};
+					
+					
+					$.get('data/Count_For_Year_Breast.csv', function(data) {
+						// Split the lines
+						var lines = data.split('\n');
+						$.each(lines, function(lineNo, line) {
+							var items = line.split(',');
+							
+							// header line containes categories
+							if (lineNo == 0) {
+								$.each(items, function(itemNo, item) {
+									if (itemNo > 0) options.xAxis.categories.push(item);
+								});
+							}
+							
+							// the rest of the lines contain data with their name in the first position
+							else {
+								var series = { 
+									data: []
+								};
+								$.each(items, function(itemNo, item) {
+									if (itemNo == 0) {
+										series.name = item;
+									} else {
+										series.data.push(parseFloat(item));
+									}
+								});
+								
+								options.series.push(series);
+
+							}
+							
+						});
+						
+						var chart = new Highcharts.Chart(options);
+					});
+					
+					
+				}
+				
+				function highcharts24() {
+	
+
+	var options = {
+		chart: {
+			renderTo: 'chart',
+			type: 'column'
+		},
+		title: {
+			text: 'Case Count per Year - Colorectal Cancer'
+		},
+		xAxis: {
+			categories: ['Year']
+			
+		},
+		yAxis: {
+			title: {
+				text: 'No. of Cases'
+			}
+		},
+		series: []
+	};
+	
+	
+	$.get('data/Count_For_Year_Colrect.csv', function(data) {
+		// Split the lines
+		var lines = data.split('\n');
+		$.each(lines, function(lineNo, line) {
+			var items = line.split(',');
+			
+			// header line containes categories
+			if (lineNo == 0) {
+				$.each(items, function(itemNo, item) {
+					if (itemNo > 0) options.xAxis.categories.push(item);
+				});
+			}
+			
+			// the rest of the lines contain data with their name in the first position
+			else {
+				var series = { 
+					data: []
+				};
+				$.each(items, function(itemNo, item) {
+					if (itemNo == 0) {
+						series.name = item;
+					} else {
+						series.data.push(parseFloat(item));
+					}
+				});
+				
+				options.series.push(series);
+
+			}
+			
+		});
+		
+		var chart = new Highcharts.Chart(options);
+	});
+	
+	
+}
+
+				
+				function highcharts25() {
+					
+
+					var options = {
+						chart: {
+							renderTo: 'chart',
+							type: 'column'
+						},
+						title: {
+							text: 'Case Count per Year - Vulvar Cancer'
+						},
+						xAxis: {
+							categories: ['Year']
+							
+						},
+						yAxis: {
+							title: {
+								text: 'No. of Cases'
+							}
+						},
+						series: []
+					};
+					
+					
+					$.get('data/Count_For_Year_Femgen.csv', function(data) {
+						// Split the lines
+						var lines = data.split('\n');
+						$.each(lines, function(lineNo, line) {
+							var items = line.split(',');
+							
+							// header line containes categories
+							if (lineNo == 0) {
+								$.each(items, function(itemNo, item) {
+									if (itemNo > 0) options.xAxis.categories.push(item);
+								});
+							}
+							
+							// the rest of the lines contain data with their name in the first position
+							else {
+								var series = { 
+									data: []
+								};
+								$.each(items, function(itemNo, item) {
+									if (itemNo == 0) {
+										series.name = item;
+									} else {
+										series.data.push(parseFloat(item));
+									}
+								});
+								
+								options.series.push(series);
+
+							}
+							
+						});
+						
+						var chart = new Highcharts.Chart(options);
+					});
+					
+					
+				}
+				
+				
+function highcharts26() {
+					
+
+					var options = {
+						chart: {
+							renderTo: 'chart',
+							type: 'column'
+						},
+						title: {
+							text: 'Case Count per Year - Prostate Cancer'
+						},
+						xAxis: {
+							categories: ['Year']
+							
+						},
+						yAxis: {
+							title: {
+								text: 'No. of Cases'
+							}
+						},
+						series: []
+					};
+					
+					
+					$.get('data/Count_For_Year_Malegen.csv', function(data) {
+						// Split the lines
+						var lines = data.split('\n');
+						$.each(lines, function(lineNo, line) {
+							var items = line.split(',');
+							
+							// header line containes categories
+							if (lineNo == 0) {
+								$.each(items, function(itemNo, item) {
+									if (itemNo > 0) options.xAxis.categories.push(item);
+								});
+							}
+							
+							// the rest of the lines contain data with their name in the first position
+							else {
+								var series = { 
+									data: []
+								};
+								$.each(items, function(itemNo, item) {
+									if (itemNo == 0) {
+										series.name = item;
+									} else {
+										series.data.push(parseFloat(item));
+									}
+								});
+								
+								options.series.push(series);
+
+							}
+							
+						});
+						
+						var chart = new Highcharts.Chart(options);
+					});
+					
+					
+				}
+				
+function highcharts27() {
+	
+
+	var options = {
+		chart: {
+			renderTo: 'chart',
+			type: 'column'
+		},
+		title: {
+			text: 'Case Count per Year - Lung Cancer'
+		},
+		xAxis: {
+			categories: ['Year']
+			
+		},
+		yAxis: {
+			title: {
+				text: 'No. of Cases'
+			}
+		},
+		series: []
+	};
+	
+	
+	$.get('data/Count_For_Year_Respiratory.csv', function(data) {
+		// Split the lines
+		var lines = data.split('\n');
+		$.each(lines, function(lineNo, line) {
+			var items = line.split(',');
+			
+			// header line containes categories
+			if (lineNo == 0) {
+				$.each(items, function(itemNo, item) {
+					if (itemNo > 0) options.xAxis.categories.push(item);
+				});
+			}
+			
+			// the rest of the lines contain data with their name in the first position
+			else {
+				var series = { 
+					data: []
+				};
+				$.each(items, function(itemNo, item) {
+					if (itemNo == 0) {
+						series.name = item;
+					} else {
+						series.data.push(parseFloat(item));
+					}
+				});
+				
+				options.series.push(series);
+
+			}
+			
+		});
+		
+		var chart = new Highcharts.Chart(options);
+	});
+	
+	
+}
+
 			</script>
+			
+			
 	</div>
 	<!--/.container-->
 </section>
