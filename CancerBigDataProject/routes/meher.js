@@ -34,7 +34,8 @@ exports.saveUser = function(req, res) {
 			fname : input.firstname,
 			lname : input.lastname,
 			email : input.email,
-			password : encrypted
+			password : encrypted,
+			isAdmin : '0'
 		};
 		var connection = mysqldb.getConnection();
 		connection.connect();
@@ -62,7 +63,6 @@ exports.saveUser = function(req, res) {
 						if (rows[0].email == input.email) {
 							// req.flash('error','Email ID already exists.Please
 							// Login');
-							console.log("i am sad");
 							res.redirect('/');
 						}
 					}
@@ -113,6 +113,7 @@ exports.signindo = function(req, res) {
 								sess.fname = rows[0].fname;
 								sess.lname = rows[0].lname;
 								sess.email = rows[0].email;
+								sess.isAdmin = rows[0].isAdmin;
 								if (rows[0].lastlogin == null) {
 									sess.lastlogin = "First Login";
 								} else {
@@ -133,6 +134,7 @@ exports.signindo = function(req, res) {
 									firstname : sess.fname,
 									lastname : sess.lname,
 									email : sess.email,
+									isAdmin : sess.isAdmin,
 									lastlogin : sess.lastlogin,
 									session1:sessionset
 								});
@@ -227,6 +229,7 @@ exports.screeningSubmit = function(req,res){
 	res.render('screeningResult', {
 		title : 'Screening Recommendation',
 		session1 : sessionset,
+		isAdmin : isAdmin,
 		screen : screen
 	});
 }

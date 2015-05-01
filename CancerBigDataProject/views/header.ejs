@@ -93,9 +93,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="trackSymptoms">Track your Symptoms</a></li>
                                 <li><a href="viewhistory">Symptoms History</a></li>
-                                
+                                <%if(sess.isAdmin!="0"){%>
                                 <li><a href="/admin">Admin Dashboard</a></li>
-                                
+                                <%}%>
                                 <!--li><a href="404.html">404</a></li>
                                 <li><a href="shortcodes.html">Shortcodes</a></li>-->
                             </ul>
@@ -137,9 +137,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <b>
-                                        <a href="">Forgot password?</a>
-                                        </b>
+
                                     </div>
                                     <div class="col-lg-4 text-right">
                                         <button class="btn btn-action" type="submit" value="submit">Sign in</button>
@@ -203,11 +201,6 @@
                             <hr>
                             <div class="row">
                                 <div class="col-lg-8">
-                                    <label class="checkbox">
-                                    <input type="checkbox">
-                                    I've read the
-                                    <a href="page_terms.html">Terms and Conditions</a>
-                                    </label>
                                 </div>
                                 <div class="col-lg-4 text-right">
                                     <button class="btn btn-action" type="submit" value="submit">Register</button>

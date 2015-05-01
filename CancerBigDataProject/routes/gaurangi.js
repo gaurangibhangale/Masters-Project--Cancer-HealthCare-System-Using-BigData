@@ -82,16 +82,12 @@ exports.query = function(req, res) {
 
 
 exports.admin = function(req, res) {
-	if (req.session.fname == undefined) {
+	var sessionset;
+	if (req.session.isAdmin == '0') {
+		sessionset = "";
 		res.redirect("/");
 	} else {
-		var sessionset;
-		if (req.session.fname == undefined) {
-			var sessionset = "";
-		} else if(req.session.fname =='admin') {
-			var sessionset = "admin";
-		}
-
+		sessionset = "set";
 		var connection = mysqldb.getConnection();
 		connection.connect();
 		connection.query("Select * from cancerinfo", function(err, rows) {
@@ -313,7 +309,6 @@ exports.viewhistory = function(req, res) {
 		res.redirect("/");
 	} else {
 		var connection = mysqldb.getConnection();
-
 		var sessionset;
 		if (req.session.fname == undefined) {
 			var sessionset = "";
