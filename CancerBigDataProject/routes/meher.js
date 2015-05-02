@@ -229,7 +229,6 @@ exports.screeningSubmit = function(req,res){
 	res.render('screeningResult', {
 		title : 'Screening Recommendation',
 		session1 : sessionset,
-		isAdmin : isAdmin,
 		screen : screen
 	});
 }
