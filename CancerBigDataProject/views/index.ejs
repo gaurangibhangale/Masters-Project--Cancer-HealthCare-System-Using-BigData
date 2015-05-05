@@ -124,7 +124,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-heart"></i>
                             <a href="vulvar-cancer"><h2>Vulvar Cancer</h2></a>
-                            <h3>A cacner that begins in the vulva</h3>
+                            <h3>A cancer that begins in the vulva</h3>
                         </div>
                     </div><!--/.col-md-4-->
 
@@ -132,7 +132,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-heart"></i>
                             <a href="prostate-cancer"><h2>Prostate Cancer</h2></a>
-                            <h3>A cacner that begins in the prostate</h3>
+                            <h3>A cancer that begins in the prostate</h3>
                         </div>
                     </div><!--/.col-md-4-->    
                 </div><!--/.services-->
@@ -181,7 +181,7 @@
                             <div class="recent-work-inner">
                                 <h3><a href="#">William Li: Can we eat to starve cancer?</a></h3>
                                 <p>William Li presents a new way to think about treating cancer and other diseases: anti-angiogenesis ...</p>
-                                <a class="preview" href="https://www.ted.com/talks/william_li" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <a class="preview" href="https://www.youtube.com/watch?v=OjkzfeJz66o" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                             <div class="recent-work-inner">
                                 <h3><a href="#">David Agus: A new strategy in the war on cancer</a></h3>
                                 <p>Too often, says David Agus cancer treatments have a short-sighted</p>
-                                <a class="preview" href="https://www.ted.com/talks/david_agus_a_new_strategy_in_the_war_on_cancer" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                <a class="preview" href="https://www.youtube.com/watch?v=IRxgDMSp9Gs" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
                         </div>
                     </div>
@@ -267,10 +267,10 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services3.png">
+                           <a href="/screening"> <img class="img-responsive" src="images/services/services3.png"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Screening Guidance </h3>
+                            <a href="/screening"><h3 class="media-heading">Screening Guidance </h3></a>
                             <p>Get screening guidance based on symptoms</p>
                         </div>
                     </div>
@@ -279,10 +279,18 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services5.png">
+                        <%if(session1!=""){%>
+                           <a href="/trackSymptoms"> <img class="img-responsive" src="images/services/services5.png"></a>
+                           <%}else{%>
+                           	<a href="#signin" data-toggle="modal"> <img class="img-responsive" src="images/services/services5.png"></a>
+                           	<%}%>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Track Symtpoms</h3>
+                        <%if(session1!=""){%>
+                            <a href="/trackSymptoms"><h3 class="media-heading">Track Symtpoms</h3></a>
+                            <%}else{%>
+                            <a href="#signin" data-toggle="modal"><h3 class="media-heading">Track Symtpoms</h3></a>
+                            <%}%>
                             <p>Track your daily symtpoms</p>
                         </div>
                     </div>
@@ -291,11 +299,11 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services2.png">
+                           <a href="/maps"> <img class="img-responsive" src="images/services/services2.png"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Screening Remiders</h3>
-                            <p>Get Reminders for cancer screening tests</p>
+                           <a href="/maps"> <h3 class="media-heading">Find Nearest Hospital</h3></a>
+                            <p>Get list of nearest hospitals to any area</p>
                         </div>
                     </div>
                 </div>  
@@ -303,10 +311,10 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services4.png">
+                           <a href="/cancerinfo">  <img class="img-responsive" src="images/services/services4.png"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Cancer Information</h3>
+                            <a href="/cancerinfo"> <h3 class="media-heading">Cancer Information</h3></a>
                             <p>Get information about various types of cancer </p>
                         </div>
                     </div>
@@ -315,10 +323,10 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services1.png">
+                            <a href="/visualization"> <img class="img-responsive" src="images/services/services1.png"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Cancer Statistics</h3>
+                             <a href="/visualization"><h3 class="media-heading">Cancer Statistics</h3></a>
                             <p>Get information on cancer statistics and Graphs</p>
                         </div>
                     </div>
@@ -327,10 +335,10 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services6.png">
+                           <a href="/taxanomy"> <img class="img-responsive" src="images/services/services6.png"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Cancer Taxanomy</h3>
+                            <a href="/taxanomy"><h3 class="media-heading">Cancer Taxanomy</h3></a>
                             <p>Get meaning of cancer medical terms and glossary</p>
                         </div>
                     </div>
@@ -582,8 +590,8 @@
                                
                             </div>
                             <div class="media-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                                <p>New test can predict cancer up to 13 years before disease develops</p>
+                                <span><strong>-Telegraph.co.uk </strong><a href="http://www.telegraph.co.uk/news/11574893/New-test-can-predict-cancer-up-to-13-years-before-disease-develops.html" >View</a></span>
                             </div>
                          </div>
 
@@ -592,8 +600,8 @@
                                 
                             </div>
                             <div class="media-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                                <p>The Great Success And Enduring Dilemma Of Cervical Cancer Screening</p>
+                                <span><strong>-Npr.org </strong> <a href="http://www.npr.org/blogs/health/2015/04/30/398872421/the-great-success-and-enduring-dilemma-of-cervical-cancer-screening">View</a></span>
                             </div>
                          </div>
                     </div>

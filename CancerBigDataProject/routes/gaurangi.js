@@ -147,7 +147,21 @@ exports.aboutus = function(req, res) {
 		title : 'About Us'
 	})
 }
-
+exports.cancerinfo = function(req, res) {
+	var sessionset;
+	if (req.session.fname == undefined) {
+		var sessionset = "";
+	} 
+	else {
+		var sessionset = "set";
+	}
+	res.render('cancerinfo', {
+		title : 'Cancer Info',
+		session1 : sessionset
+	})
+	
+	
+}
 exports.bladder = function(req, res) {
 	var sessionset;
 	if (req.session.fname == undefined) {
