@@ -9,6 +9,7 @@ exports.index = function(req, res) {
 	}
 	else{
 		var sessionset="set";
+		console.log("inside no admin");
 	}
 		res.render('index', {
 			title : 'Welcome',
