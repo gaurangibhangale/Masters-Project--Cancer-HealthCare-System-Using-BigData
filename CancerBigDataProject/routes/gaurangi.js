@@ -213,11 +213,6 @@ exports.breast = function(req, res) {
 			});
 		});
 		connection.end();*/
-	
-	
-	
-	
-	
 }
 exports.colorectal = function(req, res) {
 	var sessionset;
@@ -311,7 +306,7 @@ exports.addSymptoms = function(req, res) {
 					}
 					// console.log(rows);
 				});
-		res.redirect('/');
+		res.redirect('/ViewHistory');
 		// res.redirect('/ViewHistory');
 		// console.log(rows)
 		connection.end();
