@@ -213,6 +213,11 @@ exports.breast = function(req, res) {
 			});
 		});
 		connection.end();*/
+	
+	
+	
+	
+	
 }
 exports.colorectal = function(req, res) {
 	var sessionset;
@@ -292,7 +297,8 @@ exports.addSymptoms = function(req, res) {
 			date : input.date,
 			severity : input.severity,
 			affected_location : input.location,
-			description : input.description
+			description : input.description,
+			email : req.session.email
 		};
 		var connection = mysqldb.getConnection();
 		console.log(data);
@@ -306,7 +312,7 @@ exports.addSymptoms = function(req, res) {
 					}
 					// console.log(rows);
 				});
-		res.redirect('/ViewHistory');
+		res.redirect('/viewhistory');
 		// res.redirect('/ViewHistory');
 		// console.log(rows)
 		connection.end();
@@ -325,7 +331,7 @@ exports.viewhistory = function(req, res) {
 			var sessionset = "set";
 		}
 		connection.connect();
-		connection.query("Select * from track_symptoms", function(err, rows) {
+		connection.query("Select * from track_symptoms where email= ?",[req.session.email], function(err, rows) {
 			if (err)
 				console.log("Error fetching results : %s", err);
 			res.render('ViewHistory', {

@@ -1,8 +1,10 @@
 @media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
+  .sidebar-nav .navbar .navbar-collapse{
     padding: 0;
     max-height: none;
     background-color: #D0D0D0;
+    float: left;
+    position: fixed;
   }
   .sidebar-nav .navbar ul {
     float: none;

@@ -28,14 +28,14 @@
 				<tr>
 					<td><label>Choose from the list to Visualize result:</label></td>
 					<td><select name="attribute" id="attribute">
-							<option value="age_at_diagnosis">Age</option>
 							<option value="gender_year">GenderBasedOnYear</option>
-							<option value="gender">Gender</option>
+							<!--  <option value="gender">Gender</option>-->
 							<option value="location">Location</option>
 							<option value="survival">Life expectancy</option>
 							<option value="alive">Survivors</option>
 							<option value="dead">Deaths</option>
 							<option value="count">Cases</option>
+							<option value="age_at_diagnosis">Age</option>
 					</select></td>
 				</tr>
 			</div>
@@ -83,13 +83,33 @@
 							'Gender Comparison for Respiratory Cancer');
 				else if (cancertype == "breast" && attribute == "gender_year")
 					highcharts('data/gender_basedonyear_bd.csv', 'column',
-							'Gender Comparison for Respiratory Cancer');
+							'Gender Comparison for Breast Cancer');
 				else if (cancertype == "lung" && attribute == "gender_year")
 					highcharts('data/gender_basedonyear_res.csv', 'column',
 							'Gender Comparison for Lung Cancer');
 				else if (cancertype == "lung" && attribute == "location")
 					highcharts('data/location_res.csv', 'pie',
 							'Location based Paitents Count');
+				else if (cancertype == "breast" && attribute == "location")
+					highcharts('data/location_breast.csv', 'pie',
+							'Location based Paitents Count');
+				else if (cancertype == "bladder" && attribute == "location")
+					highcharts('data/location_bladder.csv', 'pie',
+							'Location based Paitents Count');
+				else if (cancertype == "colorectal" && attribute == "location")
+					highcharts('data/location_colorectal.csv', 'pie',
+							'Location based Paitents Count');
+				else if (cancertype == "vulvar" && attribute == "location")
+					highcharts('data/location_vulvar.csv', 'pie',
+							'Location based Paitents Count');
+				else if (cancertype == "prostate" && attribute == "location")
+					highcharts('data/location_prostate.csv', 'pie',
+							'Location based Paitents Count');
+				
+				else if (cancertype == "breast" && attribute == "age_at_diagnosis")
+					document.getElementById('chart')
+				    .innerHTML = '<img src="images/clustering.png" />';
+				
 				else if (cancertype == "prostate" && attribute == "survival")
 					highcharts5();
 				else if (cancertype == "lung" && attribute == "survival")
